@@ -59,11 +59,211 @@ Como a sequência determina a estrutura e esta determina a função, a sequênci
 
 
 \section{Algoritmos de Alinhamento de Sequências}
-o quanto baste
+
+\subsection{Homologia, Ortologia e Paralogia}
+
+A comparação de sequências biológicas parte da premissa de que sequências semelhantes derivam de um ancestral comum e, em geral, preservam estrutura e função \cite{Durbin1998}. Duas sequências são homólogas quando compartilham um ancestral comum. A homologia é uma propriedade qualitativa, inferida a partir da similaridade, que é uma grandeza quantitativa \cite{Pearson2013}. A similaridade costuma ser expressa como porcentagem de identidade, proporção de posições alinhadas com resíduos idênticos, ou como porcentagem de similaridade, que considera também substituições entre resíduos de propriedades físico-químicas próximas, como os grupos apresentados na Tabela~\ref{tab:aminoacidos}. Como o valor depende do comprimento adotado como denominador (extensão do alinhamento, sequência menor ou maior), o critério de cálculo deve ser sempre declarado \cite{Pearson2013}. Em proteínas, identidades entre cerca de 20\% e 35\% constituem a zona de penumbra (\textit{twilight zone}), na qual a identidade isolada não permite distinguir homologia de semelhança casual \cite{Rost1999}.
+
+Genes homólogos são classificados conforme a origem da divergência \cite{Fitch1970}. Genes ortólogos divergiram após um evento de especiação, ao passo que genes parálogos divergiram após uma duplicação gênica \cite{Fitch1970}. Os ortólogos tendem a manter a função original, enquanto os parálogos podem adquirir funções distintas \cite{Koonin2005}. As duplicações geram famílias gênicas, nas quais cópias adjacentes no cromossomo (duplicações em tandem) podem permanecer muito semelhantes entre si \cite{Alberts2017}. Em comparações entre genomas, distinguir ortólogos de parálogos é, portanto, parte essencial da identificação de genes correspondentes \cite{Koonin2005}.
+
+\subsection{Alinhamento Global e Local}
+
+Um alinhamento de duas sequências é a disposição de ambas em colunas, com a inserção de lacunas (\textit{gaps}) onde necessário, de modo a evidenciar as posições correspondentes. Cada alinhamento recebe uma pontuação, calculada pela soma dos escores de cada par de resíduos alinhados e das penalidades de lacunas, e o alinhamento ótimo é o de maior pontuação \cite{Durbin1998}. A programação dinâmica permite encontrá-lo sem enumerar todos os alinhamentos possíveis, pois a pontuação de um alinhamento de prefixos é construída a partir das pontuações de prefixos menores \cite{Durbin1998}.
+
+O algoritmo de \citeauthorandyear{NeedlemanWunsch1970} realiza o alinhamento global, que abrange as sequências em toda a sua extensão. Sejam $A = a_1 a_2 \ldots a_m$ e $B = b_1 b_2 \ldots b_n$ duas sequências, $s(a_i, b_j)$ o escore de substituição entre dois resíduos e $d$ a penalidade por posição de lacuna. A pontuação $F(i,j)$ do melhor alinhamento entre os prefixos $a_1 \ldots a_i$ e $b_1 \ldots b_j$ é dada pela Equação~\ref{eq:nw}, com $F(i,0) = -i d$ e $F(0,j) = -j d$.
+
+\begin{equation}
+	F(i,j) = \max
+	\begin{cases}
+		F(i-1,j-1) + s(a_i, b_j) \\
+		F(i-1,j) - d \\
+		F(i,j-1) - d
+	\end{cases}
+	\label{eq:nw}
+\end{equation}
+
+A matriz $F$ possui $(m+1)(n+1)$ células, e cada uma é calculada em tempo constante, de modo que o tempo e o espaço necessários são proporcionais a $mn$, ou $O(mn)$. O alinhamento é recuperado por retrocesso (\textit{traceback}) a partir da célula $F(m,n)$ \cite{Durbin1998}.
+
+O algoritmo de \citeauthorandyear{SmithWaterman1981} realiza o alinhamento local, que identifica o par de regiões de maior similaridade entre as sequências, sem exigir que o restante seja semelhante. A diferença em relação ao global está na Equação~\ref{eq:sw}, que admite o valor zero e, assim, permite iniciar um novo alinhamento em qualquer posição. O retrocesso parte da célula de maior valor da matriz e termina ao encontrar uma célula de valor zero.
+
+\begin{equation}
+	H(i,j) = \max
+	\begin{cases}
+		0 \\
+		H(i-1,j-1) + s(a_i, b_j) \\
+		H(i-1,j) - d \\
+		H(i,j-1) - d
+	\end{cases}
+	\label{eq:sw}
+\end{equation}
+
+O alinhamento global é indicado para sequências homólogas em toda a extensão e de comprimentos semelhantes, enquanto o local é indicado quando apenas trechos são conservados, como domínios compartilhados \cite{Durbin1998}. Quando os comprimentos diferem muito, o alinhamento global precisa introduzir lacunas para cobrir a sequência mais longa, o que reduz a pontuação e a porcentagem de identidade, mesmo que um trecho extenso seja idêntico. Uma variação consiste em não penalizar lacunas nas extremidades, evitando esse efeito \cite{Durbin1998}.
+
+\subsection{Penalidades de Lacunas}
+
+No modelo linear, o custo de uma lacuna de comprimento $k$ é $w(k) = dk$. Em sequências biológicas, porém, inserções e deleções frequentemente envolvem segmentos contíguos, de modo que o custo de uma lacuna longa deve ser menor que o de várias lacunas curtas. O modelo afim representa essa característica por $w(k) = a + bk$, em que $a$ é a penalidade de abertura, $b$ é a de extensão e $a > b$ \cite{Durbin1998}. \citeauthorandyear{Gotoh1982} propôs um algoritmo que incorpora o modelo afim em tempo proporcional a $mn$, mediante o uso de três matrizes, descritas na Equação~\ref{eq:gotoh}. A matriz $H$ guarda a melhor pontuação de um alinhamento que termina na posição $(i,j)$, e as matrizes $E$ e $F$ guardam as melhores pontuações dos alinhamentos que terminam, respectivamente, em lacuna na sequência $A$ e em lacuna na sequência $B$.
+
+\begin{equation}
+	\begin{aligned}
+		E(i,j) &= \max\{ H(i,j-1) - (a+b),\; E(i,j-1) - b \} \\
+		F(i,j) &= \max\{ H(i-1,j) - (a+b),\; F(i-1,j) - b \} \\
+		H(i,j) &= \max\{ H(i-1,j-1) + s(a_i, b_j),\; E(i,j),\; F(i,j) \}
+	\end{aligned}
+	\label{eq:gotoh}
+\end{equation}
+
+Nas duas primeiras linhas da Equação~\ref{eq:gotoh}, a lacuna é aberta a partir de $H$, com custo $a+b$, ou estendida a partir de $E$ ou $F$, com custo $b$. Como as bordas da matriz são inicializadas com o custo afim correspondente, o resultado do alinhamento global é o valor de $H(m,n)$. O mesmo esquema se aplica ao alinhamento local, com a adição do valor zero em $H$ \cite{Gotoh1982}.
+
+\subsection{Matrizes de Substituição}
+
+O escore $s(a_i, b_j)$ é obtido de uma matriz de substituição, que atribui a cada par de aminoácidos uma pontuação positiva, se a substituição é observada com mais frequência do que o esperado ao acaso, ou negativa, em caso contrário. Esses escores são razões de log-verossimilhança, conforme a Equação~\ref{eq:logodds}, em que $p_{ab}$ é a frequência observada do par $(a,b)$ em alinhamentos de proteínas relacionadas, $q_a$ e $q_b$ são as frequências de cada aminoácido e $\lambda$ é um fator de escala \cite{Henikoff1992}.
+
+\begin{equation}
+	s(a,b) = \frac{1}{\lambda} \log \frac{p_{ab}}{q_a q_b}
+	\label{eq:logodds}
+\end{equation}
+
+As matrizes PAM, de \citeauthorandyear{Dayhoff1978}, foram derivadas de mutações aceitas em proteínas muito semelhantes e extrapoladas, por um modelo de Markov, para distâncias evolutivas maiores. Já as matrizes BLOSUM, de \citeauthorandyear{Henikoff1992}, foram derivadas de blocos de segmentos conservados de proteínas relacionadas, agrupando-se sequências com identidade acima de um limiar. No caso da BLOSUM62, o limiar é de 62\% \cite{Henikoff1992}. Números maiores em BLOSUM indicam sequências mais próximas, e o inverso vale para PAM. A BLOSUM62 é a matriz mais utilizada em comparações de proteínas e é a padrão de ferramentas de busca como o BLAST \cite{Altschul1997}.
+
+\subsection{Busca Heurística: BLAST}
+
+Como o alinhamento por programação dinâmica requer tempo proporcional a $mn$ para cada par, compará-lo com todas as sequências de um banco com milhões de entradas é inviável na prática. Os métodos heurísticos reduzem o custo ao examinar apenas regiões promissoras, sem garantia de encontrar o alinhamento ótimo. O BLAST (\textit{Basic Local Alignment Search Tool}) é o mais difundido \cite{Altschul1990}. Seu funcionamento pode ser resumido em quatro etapas:
+
+\begin{enumerate}
+	\item A sequência de consulta é decomposta em palavras de comprimento fixo $w$ (três resíduos, no caso de proteínas), e são listadas as palavras vizinhas, cuja pontuação contra cada palavra da consulta, pela matriz de substituição, é de ao menos um limiar $T$ \cite{Altschul1990};
+	\item As palavras da lista são procuradas nas sequências do banco, e cada ocorrência constitui uma semente;
+	\item Duas sementes não sobrepostas, na mesma diagonal e a uma distância máxima, desencadeiam a extensão do alinhamento, estratégia conhecida como de dois acertos \cite{Altschul1997};
+	\item O alinhamento é estendido nos dois sentidos, e os que superam um limiar de pontuação recebem uma extensão com lacunas, gerando os pares de segmentos de alta pontuação (\textit{high-scoring segment pairs}, HSPs) \cite{Altschul1997}.
+\end{enumerate}
+
+A significância de cada alinhamento é expressa pelo valor esperado (\textit{E-value}), o número de alinhamentos com pontuação igual ou superior a $S$ esperado ao acaso em um espaço de busca de mesmo tamanho \cite{Karlin1990}. A pontuação bruta é convertida em pontuação em \textit{bits}, que independe da matriz utilizada, e ambos se relacionam pela Equação~\ref{eq:evalue}, em que $m$ é o comprimento da consulta, $n$ é o tamanho total do banco, e $\lambda$ e $K$ são parâmetros estatísticos do sistema de pontuação \cite{Karlin1990, Altschul1997}. Quanto menor o \textit{E-value}, mais significativo é o alinhamento.
+
+\begin{equation}
+	S' = \frac{\lambda S - \ln K}{\ln 2}, \qquad E = m n \, 2^{-S'}
+	\label{eq:evalue}
+\end{equation}
+
+A implementação atual é o BLAST+, que permite a execução local, com bancos construídos a partir de arquivos FASTA, e controle sobre os parâmetros de busca \cite{Camacho2009}. Em proteínas (BLASTP), a configuração padrão utiliza palavras de três resíduos, a matriz BLOSUM62 e penalidades de abertura e extensão de lacuna de 11 e 1 \cite{Altschul1997, Camacho2009}. A Tabela~\ref{tab:algoritmos} sintetiza as diferenças entre os algoritmos apresentados.
+
+\FloatBarrier
+\begin{table}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Comparação entre os algoritmos de alinhamento apresentados}
+	\begin{tabularx}{\textwidth}{@{}lllX@{}}
+		\toprule
+		\textbf{Algoritmo} & \textbf{Escopo} & \textbf{Lacunas} & \textbf{Característica} \\
+		\midrule
+		Needleman-Wunsch & Global           & Linear          & Ótimo; tempo e espaço $O(mn)$ \\
+		Smith-Waterman   & Local            & Linear          & Ótimo; tempo e espaço $O(mn)$ \\
+		Gotoh            & Global ou local  & Afim            & Ótimo; tempo $O(mn)$ \\
+		BLAST            & Local            & Afim            & Heurístico; não preenche a matriz completa \\
+		\bottomrule
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborada pelo autor, com base em \citeonline{NeedlemanWunsch1970, SmithWaterman1981, Gotoh1982, Altschul1997}
+	\label{tab:algoritmos}
+\end{table}
+\FloatBarrier
+
+\subsection{Melhores Correspondências Recíprocas}
+
+Para identificar genes correspondentes entre dois genomas, um critério difundido é o das melhores correspondências recíprocas (\textit{Reciprocal Best Hits}, RBH). Dado um gene $x$ de um genoma $G_1$, busca-se em $G_2$ o gene $y$ de maior similaridade com $x$; em seguida, repete-se a busca de $y$ em $G_1$. Se o melhor resultado for $x$, o par $(x, y)$ constitui um RBH \cite{Overbeek1999}. O critério é usado como aproximação de ortologia, pois, se cada gene é o melhor correspondente do outro, nenhum parálogo de $x$ ou de $y$ é mais próximo do par \cite{Tatusov1997, MorenoHagelsieb2008}.
+
+O RBH, contudo, não garante ortologia. Perdas diferenciais de genes e duplicações recentes, como as em tandem, podem levar à escolha de um parálogo \cite{MorenoHagelsieb2008}. Alinhamentos que cobrem apenas parte das sequências também podem gerar correspondências espúrias, de modo que se recomenda associar ao RBH limiares de \textit{E-value} e de cobertura do alinhamento, o que aumenta a confiabilidade dos pares obtidos \cite{MorenoHagelsieb2008}.
 
 
 \section{Café}
-o quanto baste
+
+\subsection{O Gênero \textit{Coffea}}
+
+O cafeeiro pertence ao gênero \textit{Coffea}, da família Rubiaceae \cite{Davis2006}. O levantamento taxonômico de \citeauthorandyear{Davis2006} reconheceu 103 espécies, e a inclusão posterior de espécies do gênero \textit{Psilanthus}, com base em dados moleculares e morfológicos, elevou esse número para 124 \cite{Davis2011}. As espécies ocorrem naturalmente na África tropical, em Madagascar, nas ilhas do Oceano Índico e em regiões tropicais da Ásia e da Oceania \cite{Davis2006, Davis2011}. Todas são diploides (2n = 2x = 22), exceto \textit{Coffea arabica}, que é tetraploide (2n = 4x = 44) \cite{Davis2011}.
+
+Duas espécies sustentam a produção comercial: \textit{C. arabica}, conhecida como café arábica, e \textit{C. canephora}, conhecida como café robusta \cite{Privat2008}. As demais espécies, como \textit{C. eugenioides}, progenitora de \textit{C. arabica}, e \textit{C. mauritiana}, nativa das ilhas Mascarenhas (Maurício e Reunião) \cite{Davis2006, Dulloo1999}, têm importância comercial reduzida, mas representam fonte de diversidade genética para o melhoramento \cite{Scalabrin2020}.
+
+\subsection{\textit{Coffea arabica}: Alopoliploidia e Variedades}
+
+\textit{C. arabica} é uma espécie alopoliploide, resultante da hibridização entre ancestrais de \textit{C. canephora} e de \textit{C. eugenioides} \cite{Lashermes1999, Scalabrin2020}. Os dados indicam que a espécie se originou de um único evento de poliploidização, o que explica a baixa variabilidade genética observada tanto em populações silvestres quanto cultivadas \cite{Scalabrin2020}. O genoma é composto, portanto, por dois subgenomas, um de origem \textit{canephora} e outro de origem \textit{eugenioides}, que podem ser montados e analisados separadamente \cite{Scalabrin2020}. Em alopoliploides, os genes que divergiram por especiação nas espécies progenitoras e foram reunidos em um mesmo genoma pela hibridização são denominados homeólogos \cite{Glover2016}. Cada gene de \textit{C. arabica} pode, assim, apresentar duas cópias homeólogas, além de eventuais parálogos, o que exige distinguir ortólogos, parálogos e homeólogos nas comparações entre espécies \cite{Glover2016}.
+
+As variedades cultivadas de \textit{C. arabica} derivam de uma base genética estreita \cite{Anthony2002}. Os grupos Typica e Bourbon, disseminados a partir do Iêmen ao longo do século XVIII, deram origem à maior parte das variedades comerciais \cite{Anthony2002}. Variedades como a Geisha têm origem no sudoeste da Etiópia, centro primário de diversidade da espécie \cite{Anthony2002}. Como consequência da origem recente e da baixa variação genética, as diferenças entre variedades de uma mesma espécie tendem a ser pequenas \cite{Scalabrin2020}.
+
+\subsection{Genomas de Referência e Proteomas Preditos}
+
+O genoma de \textit{C. canephora} foi apresentado na forma de um rascunho (\textit{draft}) de alta qualidade, com ordem gênica conservada em relação a outras asterídeas e sem a triplicação genômica observada em Solanaceae \cite{Denoeud2014}. Esse genoma revelou expansões de famílias gênicas específicas da espécie, entre elas as das N-metiltransferases envolvidas na produção de cafeína e as de enzimas de alcaloides e de flavonoides \cite{Denoeud2014}. Para \textit{C. arabica}, \citeauthorandyear{Scalabrin2020} montaram de forma independente os dois subgenomas, com 444 Mb atribuídos ao subgenoma \textit{canephora} e 527 Mb ao \textit{eugenioides}. A anotação computacional desses genomas gera modelos gênicos, e as regiões codificantes, traduzidas em sequências de aminoácidos, constituem os proteomas preditos \cite{Denoeud2014, Scalabrin2020}.
+
+\subsection{Sabor e Aroma: Natureza Multifatorial}
+
+O aroma do café é uma mistura complexa de compostos voláteis, formada principalmente durante a torra a partir de precursores presentes no grão verde, como polissacarídeos, açúcares, aminoácidos e ácidos clorogênicos \cite{Buffo2004}. A composição do grão verde, que depende do genótipo, é apenas um dos fatores envolvidos. O sabor e o aroma da bebida dependem também das condições de cultivo, do processamento pós-colheita, da torra e do preparo \cite{Buffo2004, Ludwig2014}. Trata-se, portanto, de traços multifatoriais e poligênicos, e os genes de vias metabólicas associadas aos precursores relacionam-se a esses traços de forma indireta, sem determiná-los isoladamente.
+
+Entre as reações da torra, destaca-se a reação de Maillard, descrita por \citeauthorandyear{Maillard1912} como a reação entre aminoácidos e açúcares redutores. Esse conjunto de reações não enzimáticas, esquematizado por \citeauthorandyear{Hodge1953}, produz compostos voláteis de aroma e pigmentos poliméricos denominados melanoidinas \cite{Buffo2004}. A caramelização, que consiste na degradação térmica de açúcares sem a participação de aminoácidos, ocorre em paralelo \cite{Buffo2004}.
+
+\subsection{Vias Metabólicas Associadas ao Sabor e ao Aroma}
+
+Três grupos de compostos do grão verde são frequentemente associados ao sabor e ao aroma do café: a cafeína, os ácidos clorogênicos e a sacarose \cite{Ludwig2014}. A Tabela~\ref{tab:vias} sintetiza, para cada um, o composto, a contribuição sensorial associada e as enzimas e genes envolvidos em sua síntese, detalhados nas subseções seguintes.
+
+\FloatBarrier
+\begin{table}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Vias metabólicas do café associadas ao sabor e ao aroma}
+	\begin{tabularx}{\textwidth}{@{}lXX@{}}
+		\toprule
+		\textbf{Via} & \textbf{Contribuição associada} & \textbf{Enzimas e genes} \\
+		\midrule
+		Cafeína           & Amargor                                                  & N-metiltransferases (genes \textit{XMT}, \textit{MXMT} e \textit{DXMT}) \\
+		Ácidos clorogênicos & Amargor e adstringência                                & Hidroxicinamoil transferases (gene \textit{HCT}) \\
+		Sacarose          & Precursor de aroma e sabor, formados na torra            & Sacarose-fosfato sintase (gene \textit{SPS}) \\
+		\bottomrule
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborada pelo autor, com base em \citeonline{Uefuji2003, Lallemand2012, Privat2008, Buffo2004}
+	\label{tab:vias}
+\end{table}
+\FloatBarrier
+
+\subsubsection{Cafeína}
+
+A cafeína (1,3,7-trimetilxantina) é um alcaloide purínico e o principal composto estimulante do café \cite{Ludwig2014}. Contribui para o amargor da bebida, embora outros compostos, formados na torra, também participem dessa característica \cite{Buffo2004, Ludwig2014}. Sua biossíntese ocorre a partir da xantosina, por três etapas de N-metilação e uma de remoção da ribose, conforme a Figura~\ref{fig:cafeina}, e o doador de grupos metil é a S-adenosilmetionina \cite{Uefuji2003}.
+
+\FloatBarrier
+\begin{figure}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Via de biossíntese da cafeína em \textit{Coffea}}
+	\begin{tabular}{c}
+		Xantosina \\
+		$\downarrow$ \footnotesize{XMT} \\
+		7-metilxantosina \\
+		$\downarrow$ \footnotesize{remoção da ribose} \\
+		7-metilxantina \\
+		$\downarrow$ \footnotesize{MXMT} \\
+		Teobromina \\
+		$\downarrow$ \footnotesize{DXMT} \\
+		Cafeína
+	\end{tabular}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Adaptada de \citeonline{Uefuji2003}
+	\label{fig:cafeina}
+\end{figure}
+\FloatBarrier
+
+As três N-metiltransferases foram caracterizadas em \textit{C. arabica} por \citeauthorandyear{Uefuji2003}: a xantosina metiltransferase (XMT), que converte xantosina em 7-metilxantosina; a monometilxantina metiltransferase (MXMT), que converte 7-metilxantina em teobromina; e a dimetilxantina metiltransferase (DXMT), que atua na formação final da cafeína. Os genes que as codificam, \textit{XMT}, \textit{MXMT} e \textit{DXMT}, pertencem a uma mesma família de N-metiltransferases \cite{Uefuji2003}. No genoma de \textit{C. canephora}, essas N-metiltransferases se expandiram por duplicações em tandem sequenciais, de modo independente das observadas no cacau e no chá, o que sugere que a cafeína tenha origem polifilética em eudicotiledôneas \cite{Denoeud2014}. Assim, o genoma abriga múltiplas cópias parálogas muito semelhantes entre si, característica que torna a identificação do gene ortólogo mais difícil. Os teores de cafeína tendem a ser maiores em \textit{C. canephora} do que em \textit{C. arabica} \cite{Ludwig2014}.
+
+\subsubsection{Ácidos Clorogênicos}
+
+Os ácidos clorogênicos são ésteres de ácidos hidroxicinâmicos, como o cafeico e o ferúlico, com o ácido quínico, e constituem os principais compostos fenólicos do grão verde de café \cite{FarahDonangelo2006}. Estão associados à resposta a estresses bióticos e abióticos, e os ésteres de chiquimato relacionados são intermediários da biossíntese de lignina \cite{Lallemand2012}. Contribuem para o amargor e a adstringência da bebida, em especial pelos produtos de sua degradação durante a torra \cite{Buffo2004, FarahDonangelo2006}.
+
+Sua síntese depende de hidroxicinamoil-CoA chiquimato/quinato hidroxicinamoil transferases (HCT/HQT), que transferem o grupo hidroxicinamoil de um tioéster de coenzima A ao chiquimato ou ao quinato \cite{Lallemand2012}. Em \textit{C. canephora}, \citeauthorandyear{Lallemand2012} mostraram que a HCT é capaz de sintetizar \textit{in vitro} o éster 3,5-O-dicafeoilquínico, constituinte importante do grão imaturo, e determinaram sua estrutura tridimensional.
+
+\subsubsection{Sacarose}
+
+A sacarose é o principal açúcar solúvel do grão de café e um importante precursor de sabor \cite{Privat2008}. Durante a torra, a sacarose, que não é um açúcar redutor, é degradada em grande medida, de modo que sua contribuição ao sabor é indireta, por meio dos produtos que originam as reações de Maillard e de caramelização \cite{Buffo2004, Ludwig2014}. O acúmulo de sacarose no grão é maior em \textit{C. arabica} do que em \textit{C. canephora}, diferença atribuída, em parte, à maior capacidade de ressíntese de sacarose no final da maturação, associada à sacarose-fosfato sintase (SPS) \cite{Privat2008}.
+
+A SPS catalisa a formação de sacarose-6-fosfato a partir de UDP-glicose e frutose-6-fosfato, e uma fosfatase específica converte esse produto em sacarose \cite{Privat2008, Geromel2006}. Os teores finais de sacarose resultam do equilíbrio entre as enzimas de síntese e de degradação, como a sacarose sintase e as invertases \cite{Geromel2006}.
+
+\subsubsection{Considerações sobre a Relação entre Genes e Fenótipo}
+
+A comparação entre espécies de \textit{Coffea} mostra que as diferenças de composição química nem sempre decorrem de variações na sequência das enzimas. No caso da sacarose, as diferenças entre \textit{C. arabica} e \textit{C. canephora} foram associadas às atividades enzimáticas e à expressão dos genes ao longo do desenvolvimento do grão \cite{Privat2008}. Desse modo, a conservação ou a divergência de sequências de proteínas de uma via não permite, por si só, inferir diferenças de fenótipo, pois estas dependem também da regulação da expressão gênica, do ambiente e do processamento do grão \cite{Privat2008, Buffo2004}.
 
 
 \section{Título}
