@@ -57,6 +57,35 @@ As enzimas são catalisadores biológicos, em sua maioria proteínas, que aceler
 
 Como a sequência determina a estrutura e esta determina a função, a sequência de aminoácidos é a base para inferir a função de uma proteína \cite{Nelson2014}. Na evolução, a estrutura tridimensional é mais conservada do que a sequência, de modo que proteínas de sequências divergentes podem manter dobramentos semelhantes \cite{Chothia1986}. Resíduos essenciais à estrutura ou à atividade, como os do sítio ativo, tendem a ser conservados, e substituições entre aminoácidos de propriedades semelhantes (Tabela~\ref{tab:aminoacidos}) são mais toleradas \cite{Nelson2014}. Essa conservação diferencial permite quantificar o parentesco entre proteínas pela comparação de suas sequências.
 
+\section{Evolução Molecular e Conservação de Sequências}
+
+\subsection{Mutação e Variação Genética}
+
+As diferenças entre sequências homólogas resultam do acúmulo de mutações ao longo da evolução. As mutações surgem, entre outras causas, de erros na replicação do DNA e de lesões que não foram reparadas \cite{Alberts2017}. As principais são as substituições de nucleotídeos e as inserções e deleções (\textit{indels}) \cite{Alberts2017}. Em regiões codificantes, uma substituição é denominada sinônima quando o novo códon especifica o mesmo aminoácido, o que é possível pela degeneração do código genético, e não sinônima quando altera o aminoácido \cite{Hurst2002}. As alterações não sinônimas são ditas conservativas quando o novo aminoácido tem propriedades físico-químicas semelhantes às do original, como os de um mesmo grupo da Tabela~\ref{tab:aminoacidos}, e radicais em caso contrário \cite{GraurLi2000}. Já as inserções e deleções cujo comprimento não é múltiplo de três alteram a fase de leitura dos códons a jusante \cite{GraurLi2000}.
+
+\subsection{Seleção Natural e Evolução Neutra}
+
+Segundo a teoria neutra da evolução molecular, a maior parte das substituições fixadas em nível molecular é seletivamente neutra, e sua fixação resulta da deriva genética, e não da seleção natural \cite{Kimura1968, KingJukes1969}. Isso não exclui a ação da seleção. A seleção purificadora (ou negativa) elimina variantes deletérias e mantém a sequência inalterada, enquanto a seleção positiva favorece variantes vantajosas \cite{GraurLi2000}. Em genes que codificam proteínas, a seleção purificadora é predominante, e por isso a conservação de sequências é interpretada como indício de restrição funcional \cite{GraurLi2000}.
+
+A intensidade dessa restrição varia entre moléculas e entre regiões de uma mesma molécula. \citeauthorandyear{KimuraOhta1974} observaram que as moléculas, ou regiões, menos restritas funcionalmente evoluem mais rapidamente. Em proteínas, os sítios de maior importância estrutural ou catalítica, como os do sítio ativo e os do interior do dobramento, são em geral mais conservados do que os da superfície \cite{Echave2016}, o que explica a conservação diferencial de resíduos já descrita para as enzimas. Em sequências codificantes, a forma de seleção em atuação pode ser avaliada pela razão $\omega = d_N / d_S$ entre as taxas de substituições não sinônimas ($d_N$) e sinônimas ($d_S$): valores menores que 1 indicam seleção purificadora, valores próximos de 1 indicam evolução neutra e valores maiores que 1 indicam seleção positiva \cite{Hurst2002}.
+
+\subsection{Taxas de Evolução e Relógio Molecular}
+
+\citeauthorandyear{Zuckerkandl1965} observaram que o número de diferenças entre proteínas homólogas de espécies distintas cresce aproximadamente com o tempo de divergência, o que originou a hipótese do relógio molecular. A taxa de evolução, porém, não é uniforme: difere entre proteínas, em função da restrição funcional \cite{KimuraOhta1974}, e entre linhagens \cite{GraurLi2000}. Em consequência, o grau de divergência entre duas sequências depende do tempo desde a separação das linhagens e da taxa própria do gene. Proteínas sob forte restrição podem permanecer quase idênticas mesmo entre espécies distantes, e proteínas pouco restritas podem divergir bastante entre linhagens próximas \cite{KimuraOhta1974}.
+
+\subsection{Duplicação Gênica e Evolução de Famílias Gênicas}
+
+A duplicação gênica é uma das principais fontes de novos genes, pois a cópia adicional pode divergir sem prejuízo da função original \cite{Ohno1970}. Após a duplicação, os destinos mais comuns são a perda de função de uma das cópias (pseudogenização), a aquisição de uma nova função por uma delas (neofuncionalização) e a divisão da função ancestral entre as cópias (subfuncionalização) \cite{Force1999}. A maior parte das cópias duplicadas é perdida em escala evolutiva, e a preservação de ambas está ligada a esses processos \cite{Lynch2000}. Como a pressão seletiva sobre uma das cópias pode ser relaxada, os parálogos tendem a divergir mais rapidamente do que os ortólogos \cite{Zhang2003}.
+
+As duplicações podem ocorrer em escala pequena, como as em tandem, que geram cópias adjacentes no cromossomo, ou em escala genômica, por poliploidização \cite{Zhang2003}. Famílias gênicas formadas por duplicações em tandem evoluem pelo processo de nascimento e morte, em que novos genes são criados por duplicação e alguns são posteriormente perdidos ou inativados \cite{NeiRooney2005}. As cópias resultantes podem permanecer muito semelhantes, e, em consequência, a identificação do ortólogo exato entre espécies tende a ser mais difícil nesses grupos, como no caso das N-metiltransferases de \textit{Coffea} \cite{Denoeud2014}. Em alopoliploides, a poliploidização duplica todo o conteúdo gênico e produz os homeólogos, sujeitos aos mesmos processos de divergência e de perda \cite{Zhang2003, Glover2016}.
+
+\subsection{Implicações para a Comparação de Sequências}
+
+A conservação ou divergência entre sequências deve ser interpretada à luz desses processos. Entre ortólogos de linhagens muito próximas, esperam-se identidades elevadas. Em \textit{C. arabica}, por exemplo, a identidade mediana entre ortólogos das variedades Geisha e Red Bourbon foi de 99,67\%, valor superior ao observado entre os subgenomas e as espécies progenitoras (mediana de 97,28\%) \cite{Medrano2025}. Diferenças de conservação entre genes de um mesmo par de genomas são igualmente esperadas, pois refletem restrições funcionais distintas \cite{KimuraOhta1974}.
+
+A similaridade de sequência não implica, por si só, função idêntica: parálogos podem ter divergido funcionalmente \cite{Koonin2005}. Do mesmo modo, a conservação da sequência de uma enzima não garante a conservação do fenótipo associado, que depende também da regulação da expressão gênica \cite{Privat2008}.
+
+% Substitui a versão anterior: apenas ajusta a frase que citava a Tabela de algoritmos.
 
 \section{Algoritmos de Alinhamento de Sequências}
 
@@ -143,7 +172,7 @@ A significância de cada alinhamento é expressa pelo valor esperado (\textit{E-
 	\label{eq:evalue}
 \end{equation}
 
-A implementação atual é o BLAST+, que permite a execução local, com bancos construídos a partir de arquivos FASTA, e controle sobre os parâmetros de busca \cite{Camacho2009}. Em proteínas (BLASTP), a configuração padrão utiliza palavras de três resíduos, a matriz BLOSUM62 e penalidades de abertura e extensão de lacuna de 11 e 1 \cite{Altschul1997, Camacho2009}. A Tabela~\ref{tab:algoritmos} sintetiza as diferenças entre os algoritmos apresentados.
+A implementação atual é o BLAST+, que permite a execução local, com bancos construídos a partir de arquivos FASTA, e controle sobre os parâmetros de busca \cite{Camacho2009}. Em proteínas (BLASTP), a configuração padrão utiliza palavras de três resíduos, a matriz BLOSUM62 e penalidades de abertura e extensão de lacuna de 11 e 1 \cite{Altschul1997, Camacho2009}. As diferenças entre os algoritmos apresentados estão sintetizadas na Tabela~\ref{tab:algoritmos}.
 
 \FloatBarrier
 \begin{table}[!htbp]
@@ -172,6 +201,75 @@ Para identificar genes correspondentes entre dois genomas, um critério difundid
 
 O RBH, contudo, não garante ortologia. Perdas diferenciais de genes e duplicações recentes, como as em tandem, podem levar à escolha de um parálogo \cite{MorenoHagelsieb2008}. Alinhamentos que cobrem apenas parte das sequências também podem gerar correspondências espúrias, de modo que se recomenda associar ao RBH limiares de \textit{E-value} e de cobertura do alinhamento, o que aumenta a confiabilidade dos pares obtidos \cite{MorenoHagelsieb2008}.
 
+% Inserir logo após "Algoritmos de Alinhamento de Sequências" (usa as equações e a Tabela de aminoácidos já existentes).
+
+\section{Métricas de Similaridade entre Proteínas}
+
+\subsection{Identidade, Similaridade e Cobertura}
+
+Em um alinhamento par a par, cada coluna pode conter dois resíduos idênticos, dois resíduos distintos ou um resíduo e uma lacuna. Sejam $N_{id}$ o número de colunas com resíduos idênticos e $N_{pos}$ o número de colunas com resíduos distintos cuja pontuação na matriz de substituição é positiva, ou seja, substituições conservativas. A porcentagem de identidade (PID) e a porcentagem de similaridade (PSIM) são dadas pelas Equações~\ref{eq:pid} e \ref{eq:psim}, em que $L$ é o comprimento adotado como denominador \cite{Pearson2013}.
+
+\begin{equation}
+	\mathrm{PID} = 100 \times \frac{N_{id}}{L}
+	\label{eq:pid}
+\end{equation}
+
+\begin{equation}
+	\mathrm{PSIM} = 100 \times \frac{N_{id} + N_{pos}}{L}
+	\label{eq:psim}
+\end{equation}
+
+Não há uma definição universal para $L$. Quatro definições são usuais, descritas na Tabela~\ref{tab:pid} \cite{May2004, Raghava2006}. Para um mesmo alinhamento, elas fornecem valores diferentes: \citeauthorandyear{Raghava2006} verificaram que a escolha do método de cálculo isoladamente pode alterar a porcentagem de identidade em até 11,5 pontos percentuais, e que a combinação com o algoritmo de alinhamento chega a 22 pontos. Por isso, a definição de $L$ utilizada deve ser declarada junto ao valor \cite{May2004, Raghava2006}.
+
+\FloatBarrier
+\begin{table}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Definições usuais do comprimento $L$ no cálculo da porcentagem de identidade}
+	\begin{tabularx}{\textwidth}{@{}lXX@{}}
+		\toprule
+		\textbf{Variante} & \textbf{Denominador ($L$)} & \textbf{Característica} \\
+		\midrule
+		PID1 & Posições alinhadas, incluindo as lacunas internas & Lacunas reduzem o valor \\
+		PID2 & Posições alinhadas, excluindo as lacunas          & Lacunas são ignoradas \\
+		PID3 & Comprimento da menor sequência                    & Depende apenas da sequência menor \\
+		PID4 & Média dos comprimentos das duas sequências        & Intermediária entre PID3 e o comprimento da maior \\
+		\bottomrule
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborada pelo autor, com base em \citeonline{May2004, Raghava2006}
+	\label{tab:pid}
+\end{table}
+\FloatBarrier
+
+A escolha de $L$ tem efeito direto quando as sequências têm comprimentos diferentes. Em um alinhamento global, a sequência mais curta é completada com lacunas nas extremidades, e essas posições só entram no denominador de PID1. Com $L$ igual ao comprimento da menor sequência (PID3), o valor reflete somente a identidade em relação a ela. O alinhamento local, por sua vez, considera apenas a região mais semelhante, e a identidade calculada pode ser elevada mesmo quando a região cobre parte pequena das sequências.
+
+Por essa razão, a identidade deve ser acompanhada da cobertura do alinhamento, que é a fração dos resíduos de uma sequência incluída no alinhamento (Equação~\ref{eq:cob}), em que $R_A$ é o número de resíduos de $A$ alinhados e $|A|$ é o comprimento de $A$. A cobertura é utilizada como critério complementar de qualidade em comparações entre genomas \cite{MorenoHagelsieb2008}.
+
+\begin{equation}
+	C_A = 100 \times \frac{R_A}{|A|}
+	\label{eq:cob}
+\end{equation}
+
+\subsection{Pontuação Bruta, Normalização e Significância}
+
+A pontuação bruta de um alinhamento depende do comprimento das sequências e da matriz de substituição, de modo que não é comparável diretamente entre pares distintos \cite{Karlin1990}. A pontuação em \textit{bits} e o valor esperado (\textit{E-value}), definidos na Equação~\ref{eq:evalue}, normalizam o efeito da matriz e do tamanho do espaço de busca e permitem avaliar a significância estatística \cite{Karlin1990, Altschul1997}. A porcentagem de identidade, por sua vez, não mede significância. Uma identidade alta em um alinhamento muito curto pode ocorrer ao acaso, e o limite a partir do qual uma identidade indica homologia diminui com o comprimento do alinhamento \cite{Rost1999}.
+
+\subsection{Distância Evolutiva}
+
+A proporção de diferenças entre duas sequências alinhadas, $p = 1 - \mathrm{PID}/100$, subestima o número real de substituições, pois um mesmo sítio pode ter sofrido mais de uma mudança, e as substituições múltiplas não são observáveis \cite{NeiKumar2000}. A correção de Poisson, dada pela Equação~\ref{eq:dist}, estima a distância evolutiva $d$, em substituições por sítio, considerando essas mudanças \cite{NeiKumar2000}. Para sequências muito semelhantes, $p$ é pequeno e $d \approx p$, de modo que a identidade é uma boa aproximação da divergência. À medida que $p$ aumenta, a diferença entre $d$ e $p$ cresce, e a identidade passa a subestimar a divergência \cite{NeiKumar2000}.
+
+\begin{equation}
+	p = 1 - \frac{\mathrm{PID}}{100}, \qquad d = -\ln(1 - p)
+	\label{eq:dist}
+\end{equation}
+
+\subsection{Interpretação dos Valores}
+
+Os valores de similaridade devem ser interpretados com base em quatro elementos: o denominador adotado (Tabela~\ref{tab:pid}), a cobertura do alinhamento, o tipo de alinhamento (global ou local) e o grau de parentesco esperado entre os organismos comparados. Entre sequências de uma mesma espécie ou de variedades próximas, identidades muito altas são esperadas \cite{Medrano2025}. Em proteínas de espécies mais distantes, identidades entre cerca de 20\% e 35\% pertencem à zona de penumbra, em que a identidade isolada é insuficiente para afirmar homologia \cite{Rost1999}. Para a comparação entre diferentes pares ou genes, as medidas devem ser calculadas pelo mesmo critério, sob pena de gerar diferenças que decorrem do método de cálculo, e não das sequências \cite{Raghava2006}.
+
+
+% Substitui a versão anterior: apenas ajusta a frase que citava a Tabela das vias.
 
 \section{Café}
 
@@ -199,7 +297,7 @@ Entre as reações da torra, destaca-se a reação de Maillard, descrita por \ci
 
 \subsection{Vias Metabólicas Associadas ao Sabor e ao Aroma}
 
-Três grupos de compostos do grão verde são frequentemente associados ao sabor e ao aroma do café: a cafeína, os ácidos clorogênicos e a sacarose \cite{Ludwig2014}. A Tabela~\ref{tab:vias} sintetiza, para cada um, o composto, a contribuição sensorial associada e as enzimas e genes envolvidos em sua síntese, detalhados nas subseções seguintes.
+Três grupos de compostos do grão verde são frequentemente associados ao sabor e ao aroma do café: a cafeína, os ácidos clorogênicos e a sacarose \cite{Ludwig2014}. Para cada um, o composto, a contribuição sensorial associada e as enzimas e genes envolvidos em sua síntese estão sintetizados na Tabela~\ref{tab:vias} e detalhados nas subseções seguintes.
 
 \FloatBarrier
 \begin{table}[!htbp]
@@ -265,6 +363,124 @@ A SPS catalisa a formação de sacarose-6-fosfato a partir de UDP-glicose e frut
 
 A comparação entre espécies de \textit{Coffea} mostra que as diferenças de composição química nem sempre decorrem de variações na sequência das enzimas. No caso da sacarose, as diferenças entre \textit{C. arabica} e \textit{C. canephora} foram associadas às atividades enzimáticas e à expressão dos genes ao longo do desenvolvimento do grão \cite{Privat2008}. Desse modo, a conservação ou a divergência de sequências de proteínas de uma via não permite, por si só, inferir diferenças de fenótipo, pois estas dependem também da regulação da expressão gênica, do ambiente e do processamento do grão \cite{Privat2008, Buffo2004}.
 
+\section{Bancos de Dados Biológicos}
+
+\subsection{Bancos Primários, Secundários e Especializados}
+
+Os dados de sequências biológicas são armazenados em bancos de dados públicos, que podem ser classificados em primários, secundários e especializados. Os bancos primários arquivam as sequências submetidas diretamente pelos pesquisadores. É o caso da Colaboração Internacional de Bancos de Sequências de Nucleotídeos (INSDC), formada pelo GenBank, pelo \textit{European Nucleotide Archive} (ENA) e pelo \textit{DNA Data Bank of Japan} (DDBJ), que trocam dados entre si \cite{Arita2021, Sayers2024}. Os bancos secundários derivam dos primários e agregam curadoria e anotação. O RefSeq, por exemplo, fornece um conjunto não redundante de sequências de referência \cite{OLeary2016}, e o UniProt reúne sequências de proteínas com anotação funcional, dividido em Swiss-Prot, com curadoria manual, e TrEMBL, com anotação automática e sem revisão \cite{UniProt2023}.
+
+Há ainda bancos especializados em grupos de organismos. Em plantas, destacam-se portais de genomas comparativos, como o Phytozome \cite{Goodstein2012}, e sistemas dedicados a uma cultura ou família, que podem se basear no Ensembl, como o Gramene, ou em componentes do projeto GMOD (\textit{Generic Model Organism Database}), como o SGN, para Solanaceae, e o AIP, para \textit{Arabidopsis} \cite{Dereeper2015}. Esses bancos reúnem, além das sequências, anotações, mapas genéticos, marcadores e ferramentas de análise, e são comumente a fonte mais atualizada de dados de uma espécie. Os bancos mencionados nesta seção estão resumidos na Tabela~\ref{tab:bancos}.
+
+\FloatBarrier
+\begin{table}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Principais bancos de dados de sequências biológicas}
+	\begin{tabularx}{\textwidth}{@{}llX@{}}
+		\toprule
+		\textbf{Banco} & \textbf{Tipo} & \textbf{Conteúdo} \\
+		\midrule
+		GenBank / ENA / DDBJ & Primário      & Sequências de nucleotídeos submetidas por pesquisadores \\
+		RefSeq               & Secundário    & Sequências de referência não redundantes, com anotação \\
+		UniProt              & Secundário    & Proteínas com anotação funcional (Swiss-Prot e TrEMBL) \\
+		Phytozome            & Especializado & Genomas de plantas verdes, em plataforma comparativa \\
+		Coffee Genome Hub    & Especializado & Genomas, anotações e ferramentas para \textit{Coffea} \\
+		\bottomrule
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborada pelo autor, com base em \citeonline{Arita2021, OLeary2016, UniProt2023, Goodstein2012, Dereeper2015}
+	\label{tab:bancos}
+\end{table}
+\FloatBarrier
+
+\subsection{Coffee Genome Hub}
+
+O \textit{Coffee Genome Hub} é um banco de dados web que oferece acesso centralizado a dados genômicos, genéticos e de melhoramento do café e a ferramentas de análise \cite{CoffeeHub}. Foi desenvolvido para apoiar o projeto de sequenciamento do genoma de \textit{C. canephora}, por um grupo de pesquisadores do qual participam membros do Instituto de Pesquisa para o Desenvolvimento (IRD) da França \cite{Dereeper2015, CoffeeHub}. Utiliza software genérico do GMOD para consulta, visualização e obtenção de dados, e inclui um navegador de genoma com um sistema de anotação comunitária, que permite aprimorar a anotação automática de genes por meio de um editor de anotação \cite{Dereeper2015}. Foi também concebido de forma escalável, para receber novos genomas de \textit{Coffea} \cite{Dereeper2015}, e atualmente permite navegar nos genomas de \textit{C. arabica} e de \textit{C. canephora} \cite{CoffeeHub}.
+
+Os dados disponíveis incluem as sequências dos genomas, a estrutura dos genes, informações sobre os produtos gênicos, o metabolismo, as famílias de genes, a transcriptômica, os blocos sintênicos, os marcadores genéticos e os mapas genéticos \cite{Dereeper2015}. As montagens e as anotações estruturais e funcionais estão disponíveis para obtenção nos formatos FASTA e GFF3, respectivamente \cite{Dereeper2015}. As ferramentas incluem busca por BLAST, busca de genes, análise de famílias gênicas e desenho de iniciadores \cite{CoffeeHub}. Na descrição original do banco, as famílias gênicas foram obtidas por agrupamento de sequências codificantes de \textit{C. canephora} com as de outras 36 espécies de plantas, a partir de buscas por BLASTP e do algoritmo de agrupamento MCL \cite{Dereeper2015}.
+
+\subsection{Anotação Gênica e Identificadores}
+
+Os proteomas disponibilizados nos bancos derivam da anotação do genoma, processo que identifica a posição e a estrutura dos genes. A anotação de genomas eucarióticos combina programas de predição de genes, evidências de transcritos, como sequências de cDNA e dados de RNA-Seq, e a comparação com proteínas conhecidas, e produz modelos gênicos de qualidade variável \cite{Yandell2012}. Como parte do processo é automática, os modelos gênicos podem conter erros e são revisados à medida que novos dados surgem, como no sistema de anotação comunitária do \textit{Coffee Genome Hub} \cite{Dereeper2015, Yandell2012}.
+
+As posições e a estrutura dos modelos gênicos são descritas no formato GFF3 (\textit{Generic Feature Format} versão 3), tabular, em que cada linha descreve uma característica do genoma, como gene, transcrito ou região codificante, com sua posição na sequência \cite{Dereeper2015}. Os tipos de característica seguem o vocabulário controlado da \textit{Sequence Ontology} \cite{Eilbeck2005}. As sequências correspondentes, como as proteínas, são distribuídas em arquivos FASTA, descritos na Seção~\ref{sec:fasta}.
+
+Os modelos gênicos recebem identificadores próprios, e o identificador de um gene costuma ser distinto do de seus transcritos e do das proteínas deles derivadas. Como um gene pode originar mais de um transcrito por \textit{splicing} alternativo \cite{Alberts2017}, o mesmo gene pode corresponder a mais de uma sequência de proteína, distinguidas por sufixos no identificador. Nos repositórios do NCBI, cada registro é identificado por um número de acesso seguido de um número de versão, como em \textit{accession.version} \cite{NCBIAssembly}. Em consequência, identificadores e sequências podem mudar entre versões de uma anotação ou de uma montagem, e os resultados de uma comparação só são rastreáveis se a versão do genoma e da anotação for registrada.
+
+% Substitui a versão anterior: acrescenta apenas \label{sec:fasta}. Inserir após "Bancos de Dados Biológicos".
+
+\section{Formato FASTA e Dados de Sequências Biológicas}
+\label{sec:fasta}
+
+\subsection{Origem e Estrutura do Formato}
+
+O formato FASTA é um formato de texto simples para representar sequências de nucleotídeos ou de aminoácidos, originado do pacote de programas de comparação de sequências FASTA \cite{PearsonLipman1988}. Tornou-se um padrão de intercâmbio, aceito como entrada por ferramentas como o BLAST \cite{NCBIBlast}. Um registro em FASTA é composto por uma linha de descrição, denominada cabeçalho, seguida das linhas da sequência \cite{NCBIBlast}. O cabeçalho é distinguido da sequência pelo símbolo \verb|>| no início da linha e ocupa uma única linha de texto \cite{NCBIBlast}. Por convenção, a primeira palavra do cabeçalho é o identificador da sequência e o restante é uma descrição livre \cite{NCBIBlast}.
+
+A sequência é escrita com um símbolo por resíduo e, em geral, dividida em linhas de comprimento fixo, recomendando-se que as linhas tenham menos de 80 caracteres \cite{NCBIBlast}. A quebra de linha é apenas uma convenção de apresentação e não faz parte da sequência, de modo que deve ser desconsiderada na leitura dos resíduos. Linhas em branco no interior de um registro não são permitidas \cite{NCBIBlast}. Um mesmo arquivo pode conter vários registros em sequência (multi-FASTA), e cada novo cabeçalho inicia um novo registro, conforme o exemplo do Quadro~\ref{qua:fasta}.
+
+\FloatBarrier
+\begin{quadro}[!htbp]
+	\centering
+	\SingleSpacing\footnotesize
+	\caption{Exemplo de arquivo multi-FASTA com duas sequências hipotéticas de proteínas}
+	\begin{tabular}{|l|}
+		\hline
+		\ttfamily >proteina\_1 Proteina hipotetica A \\
+		\ttfamily MAEQLKVDRTSHGWPNYLICFEAKRDVPTGQMSHLNEYAIVKCWRTDPGAFLEKVQNSIM \\
+		\ttfamily HLRPDTQGEWNKYVSALIEC* \\
+		\ttfamily >proteina\_2 Proteina hipotetica B \\
+		\ttfamily MSTRPLQEIDKVNGAHYFWCKLMTRSEADQPNIVYG* \\
+		\hline
+	\end{tabular}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborado pelo autor
+	\label{qua:fasta}
+\end{quadro}
+\FloatBarrier
+
+O BLAST+ utiliza arquivos FASTA tanto como consulta quanto na construção de bancos de dados locais, nos quais as sequências ficam indexadas pelos identificadores dos cabeçalhos \cite{Camacho2009, NCBIBlast}. Por essa razão, os identificadores devem ser únicos dentro de um mesmo arquivo.
+
+\subsection{Alfabetos de Representação}
+
+As sequências são representadas por códigos de uma letra. Em proteínas, são utilizados os 20 códigos dos aminoácidos usuais, apresentados na Tabela~\ref{tab:aminoacidos}, e símbolos adicionais, descritos na Tabela~\ref{tab:simbolos}. Em nucleotídeos, são utilizados A, C, G e T (ou U, no RNA), além de N para uma base desconhecida e de códigos de ambiguidade que representam subconjuntos de bases \cite{NCBIBlast}. As letras minúsculas são aceitas e tratadas como maiúsculas \cite{NCBIBlast}.
+
+\FloatBarrier
+\begin{table}[!htbp]
+	\centering
+	\SingleSpacing\small
+	\caption{Símbolos adicionais utilizados em sequências de proteínas no formato FASTA}
+	\begin{tabularx}{\textwidth}{@{}lX@{}}
+		\toprule
+		\textbf{Símbolo} & \textbf{Significado} \\
+		\midrule
+		X       & Aminoácido desconhecido ou qualquer \\
+		B       & Aspartato ou asparagina \\
+		Z       & Glutamato ou glutamina \\
+		U       & Selenocisteína \\
+		*       & Terminação da tradução (códon de parada) \\
+		-       & Lacuna de comprimento indeterminado \\
+		\bottomrule
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Adaptada de \citeonline{NCBIBlast}
+	\label{tab:simbolos}
+\end{table}
+\FloatBarrier
+
+Os símbolos da Tabela~\ref{tab:simbolos} indicam incerteza ou condições especiais, e o seu tratamento em um alinhamento depende da matriz de substituição utilizada. A presença de X em proteínas deduzidas de um genoma está, tipicamente, associada a posições da sequência de nucleotídeos que são desconhecidas (N), como as lacunas de montagem descritas na Seção~\ref{sec:montagem}.
+
+\subsection{Arquivos de Proteomas Preditos}
+
+Os proteomas preditos são distribuídos, em geral, como arquivos multi-FASTA com uma sequência de aminoácidos por registro, obtida pela tradução das regiões codificantes anotadas no genoma, segundo o código genético \cite{Denoeud2014, Scalabrin2020}. O identificador de cada registro corresponde, normalmente, ao gene ou ao transcrito de origem, e o cabeçalho pode trazer informações adicionais, como a posição genômica. Como um mesmo gene pode originar mais de uma proteína por \textit{splicing} alternativo \cite{Alberts2017}, um arquivo pode conter mais de uma sequência por gene, o que deve ser considerado em contagens e comparações entre genomas.
+
+Sequências traduzidas podem terminar com o símbolo de parada (*) e conter resíduos ambíguos (X) \cite{NCBIBlast}. Podem também existir registros com sequências idênticas e proteínas muito curtas, que correspondem a modelos gênicos incompletos. Essas características, que podem ser mensuradas diretamente a partir do arquivo FASTA, constituem indicadores da qualidade de um proteoma predito.
+
+\subsection{Níveis de Montagem de Genomas e Qualidade dos Dados}
+\label{sec:montagem}
+
+A qualidade de um proteoma predito depende da qualidade da montagem do genoma de que provém. Os repositórios públicos classificam as montagens em níveis, conforme o grau de contiguidade da sequência \cite{NCBIAssembly}. No nível de contigs, nada foi montado além de segmentos contínuos de sequência; no de \textit{scaffolds}, contigs foram conectados por lacunas, representadas por sequências de N; no nível cromossômico, há sequências que representam um ou mais cromossomos; e, no genoma completo, todos os cromossomos são contínuos, sem lacunas e sem sequências não alocadas \cite{NCBIAssembly}. Um mesmo genoma pode ser composto por sequências de níveis distintos, e o nível da montagem é o mais alto atingido por qualquer sequência dela \cite{NCBIAssembly}.
+
+Montagens fragmentadas tendem a perder regiões do genoma. \citeauthorandyear{Alkan2011} verificaram que montagens \textit{de novo} baseadas em leituras curtas eram mais curtas que o genoma de referência, com perda de sequências repetidas e duplicadas e de mais de 2.377 éxons codificantes. Como consequência, os genes podem estar ausentes ou incompletos no proteoma predito, e famílias gênicas formadas por duplicações recentes, como as em tandem, podem estar representadas de forma incompleta \cite{Alkan2011}. A seleção de dados para comparações entre genomas deve, portanto, considerar o nível de montagem, além dos indicadores apresentados na seção anterior.
 
 \section{Título}
 essa seção você vai usar para explicar mais conceitos importantes para o seu trabalho.
