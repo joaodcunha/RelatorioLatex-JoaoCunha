@@ -647,18 +647,48 @@ Exemplo 2 de citação direta:
 Exemplo de nota de rodapé\footnote{Essa é uma nota de rodapé!}.
 
 
+% Inserir em capitulo02ConsideracoesGerais.tex como última seção.
+
 \section{Trabalhos Correlatos}
 
-Pesquise e descreva no mínimo três trabalhos correlatos ao seu.
+Foram selecionados três trabalhos, com base em três critérios: aderência ao escopo, isto é, a comparação de sequências de proteínas de \textit{Coffea}; credibilidade, medida pela publicação em periódicos revisados por pares e pela descrição verificável dos métodos; e complementaridade, de modo que o conjunto cubra tanto a aplicação da comparação de sequências em \textit{Coffea} quanto o programa de referência para essa comparação. Os dois primeiros são estudos de genômica comparativa em \textit{Coffea}, realizados por grupos distintos e sobre famílias gênicas distintas, e o terceiro é um programa de inferência de ortologia entre proteomas. Cada trabalho é descrito quanto ao objetivo, ao método e às contribuições, e uma síntese comparativa é apresentada no Quadro~\ref{qua:correlatos}.
 
-\subsection{Trabalho 1}
+\subsection{Genes NLR em \textit{Coffea}}
 
-Texto...
+\citeauthorandyear{Santos2022} realizaram a identificação e a análise comparativa de genes de resistência do tipo NLR em \textit{C. canephora}, \textit{C. eugenioides} e \textit{C. arabica}. As sequências foram obtidas do NCBI e do \textit{Coffee Genome Hub}, e os loci NLR foram identificados com o programa NLR-Annotator \cite{Santos2022}. A relação entre as sequências foi estudada pela comparação de todas contra todas por BLASTP, com agrupamento pelo OrthoMCL, e pela construção de árvores filogenéticas a partir de alinhamentos obtidos com o MAFFT e inferência com o RAxML \cite{Santos2022}. A sensibilidade e a especificidade da identificação foram validadas em relação às anotações existentes, com valores superiores a 99\% \cite{Santos2022}.
 
-\subsection{Trabalho 2}
+Foram identificados 1.311 loci em \textit{C. arabica}, 927 em \textit{C. canephora} e 1.079 em \textit{C. eugenioides}, e o número em \textit{C. arabica} foi menor que a soma dos genomas parentais \cite{Santos2022}. A análise de ortogrupos indicou ortólogos compartilhados entre \textit{C. arabica} e os genomas parentais e genes possivelmente perdidos \cite{Santos2022}. Os autores apontam ainda que diferenças na qualidade das montagens podem ter interferido na identificação dos loci \cite{Santos2022}. O estudo concentra-se na família de genes NLR, associada à resistência a doenças.
 
-Texto...
+\subsection{Família AP2/ERF em \textit{Coffea}}
 
-\subsection{Trabalho 3}
+\citeauthorandyear{Park2025} caracterizaram a família de fatores de transcrição AP2/ERF em \textit{C. canephora}, \textit{C. eugenioides} e \textit{C. arabica}. As proteínas foram obtidas do NCBI, com a seleção da maior sequência por gene nos casos de variantes de \textit{splicing}, e os genes foram identificados por perfis de modelos ocultos de Markov com o HMMER \cite{Park2025}. As duplicações em tandem e segmentares foram classificadas por comparações BLASTP, com critérios de similaridade e cobertura de 80\% e de distância no cromossomo, e as relações de ortologia com outras espécies de asterídeas foram estabelecidas com o OrthoFinder \cite{Park2025}. A pressão seletiva sobre os genes duplicados foi avaliada pela razão Ka/Ks \cite{Park2025}.
 
-Texto...
+Foram identificados 453 genes, sendo 217 em \textit{C. arabica}, 103 em \textit{C. canephora} e 133 em \textit{C. eugenioides}, com alta conservação cromossômica e sintênica entre as espécies \cite{Park2025}. Em \textit{C. arabica}, a maior parte dos pares classificados como duplicações segmentares estava em cromossomos homeólogos, o que levou os autores a interpretá-los como genes homólogos herdados de cada parental, e não como duplicações verdadeiras \cite{Park2025}. Um dos subgrupos, associado à resistência a doenças, apresentou número de genes distinto entre os parentais e os subgenomas de \textit{C. arabica}, o que sugere perda ou expansão específica de linhagem \cite{Park2025}. O estudo concentra-se na família de fatores de transcrição AP2/ERF, associada ao desenvolvimento e às respostas a estresses.
+
+\subsection{OrthoFinder}
+
+O OrthoFinder, de \citeauthorandyear{EmmsKelly2019}, é um programa de inferência filogenética de ortologia para genômica comparativa. A partir apenas de sequências de proteínas de várias espécies, infere ortogrupos, ortólogos, árvores de genes, eventos de duplicação e estatísticas de genômica comparativa \cite{EmmsKelly2019}. Segundo os autores, foi o método mais acurado de inferência de ortólogos no \textit{benchmark Quest for Orthologs}, com velocidade e escalabilidade equivalentes às dos métodos heurísticos baseados em pontuação \cite{EmmsKelly2019}. O programa foi empregado no estudo da família AP2/ERF em \textit{Coffea} apresentado anteriormente \cite{Park2025}.
+
+O programa opera sobre os proteomas completos das espécies e tem como resultados os ortogrupos, os ortólogos e as árvores de genes \cite{EmmsKelly2019}.
+
+\subsection{Síntese Comparativa}
+
+O Quadro~\ref{qua:correlatos} resume a natureza, o escopo e os métodos dos trabalhos apresentados.
+
+\FloatBarrier
+\begin{quadro}[!htbp]
+	\centering
+	\SingleSpacing\footnotesize
+	\caption{Síntese comparativa dos trabalhos correlatos}
+	\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+		\hline
+		\textbf{Trabalho} & \textbf{Natureza} & \textbf{Escopo} & \textbf{Comparação de sequências} \\ \hline
+		Genes NLR \cite{Santos2022} & Estudo de genômica comparativa & Genes de resistência em três espécies de \textit{Coffea} & BLASTP todos contra todos; OrthoMCL; árvores filogenéticas \\ \hline
+		Família AP2/ERF \cite{Park2025} & Estudo de genômica comparativa & Fatores de transcrição em três espécies de \textit{Coffea} & HMMER; BLASTP; OrthoFinder; Ka/Ks \\ \hline
+		OrthoFinder \cite{EmmsKelly2019} & Programa de inferência de ortologia & Proteomas de qualquer conjunto de espécies & Ortogrupos, ortólogos e árvores de genes \\ \hline
+	\end{tabularx}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborado pelo autor, com base nos trabalhos citados
+	\label{qua:correlatos}
+\end{quadro}
+\FloatBarrier
