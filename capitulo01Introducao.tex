@@ -20,15 +20,24 @@ Na introdução, o leitor terá condições de avaliar:
 \end{itemize}
 
 
+% Substitui, em capitulo01Introducao.tex, as seções "Objetivos", "Objetivo Geral" e "Objetivos Específicos" do template.
+% Usa enumitem (já carregado em estrutura.sty). Os rótulos oe:* são referenciados na Metodologia.
+
 \section{Objetivos}
+\label{sec:objetivos}
 
 \subsection{Objetivo Geral}
 
-Qual seu objetivo geral.
+Desenvolver um protótipo de ferramenta computacional para a análise comparativa de proteínas associadas a vias metabólicas do sabor e do aroma do café entre variedades de \textit{Coffea arabica} e espécies relacionadas do gênero \textit{Coffea}.
 
 \subsection{Objetivos Específicos}
-\begin{itemize}
-	\item Objetivo específico 1;
-	\item Objetivo específico 2;
-	\item Objetivo específico n.
-\end{itemize}
+
+\begin{enumerate}[label=OE\arabic*., ref=OE\arabic*]
+	\item \label{oe:dados} Obter os proteomas preditos das variedades e espécies de \textit{Coffea} que serão comparadas e verificar sua qualidade por critérios objetivos;
+	\item \label{oe:vias} Definir as vias metabólicas associadas ao sabor e ao aroma e a sequência-âncora de referência de cada via;
+	\item \label{oe:localizacao} Implementar a localização do gene correspondente à sequência-âncora em cada proteoma;
+	\item \label{oe:alinhamento} Implementar o alinhamento global com penalidade de lacuna afim e a métrica de similaridade entre pares de proteínas;
+	\item \label{oe:modulo} Organizar o núcleo bioinformático em um módulo reutilizável que gere os resultados em formato estruturado;
+	\item \label{oe:software} Desenvolver uma API e uma interface web para executar e visualizar as comparações;
+	\item \label{oe:validacao} Validar a correspondência dos genes encontrados e a métrica de similaridade com dados da literatura.
+\end{enumerate}

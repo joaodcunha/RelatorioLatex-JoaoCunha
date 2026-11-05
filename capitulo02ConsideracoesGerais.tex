@@ -57,6 +57,7 @@ As enzimas são catalisadores biológicos, em sua maioria proteínas, que aceler
 Como a sequência determina a estrutura e esta determina a função, a sequência de aminoácidos é a base para inferir a função de uma proteína \cite{Nelson2014}. Na evolução, a estrutura tridimensional é mais conservada do que a sequência, de modo que proteínas de sequências divergentes podem manter dobramentos semelhantes \cite{Chothia1986}. Resíduos essenciais à estrutura ou à atividade, como os do sítio ativo, tendem a ser conservados, e substituições entre aminoácidos de propriedades semelhantes (Tabela~\ref{tab:aminoacidos}) são mais toleradas \cite{Nelson2014}. Essa conservação diferencial permite quantificar o parentesco entre proteínas pela comparação de suas sequências.
 
 \section{Evolução Molecular e Conservação de Sequências}
+\label{sec:evolucao}
 
 \subsection{Homologia, Ortologia e Paralogia}
 
@@ -94,6 +95,7 @@ A similaridade de sequência não implica, por si só, função idêntica: pará
 \section{Algoritmos de Alinhamento de Sequências}
 
 \subsection{Alinhamento Global e Local}
+\label{subsec:global}
 
 Um alinhamento de duas sequências é a disposição de ambas em colunas, com a inserção de lacunas (\textit{gaps}) onde necessário, de modo a evidenciar as posições correspondentes. Cada alinhamento recebe uma pontuação, calculada pela soma dos escores de cada par de resíduos alinhados e das penalidades de lacunas, e o alinhamento ótimo é o de maior pontuação \cite{Durbin1998}. A programação dinâmica permite encontrá-lo sem enumerar todos os alinhamentos possíveis, pois a pontuação de um alinhamento de prefixos é construída a partir das pontuações de prefixos menores \cite{Durbin1998}.
 
@@ -195,6 +197,7 @@ A implementação atual é o BLAST+, que permite a execução local, com bancos 
 \FloatBarrier
 
 \subsection{Melhores Correspondências Recíprocas}
+\label{subsec:rbh}
 
 Para identificar genes correspondentes entre dois genomas, um critério difundido é o das melhores correspondências recíprocas (\textit{Reciprocal Best Hits}, RBH). Dado um gene $x$ de um genoma $G_1$, busca-se em $G_2$ o gene $y$ de maior similaridade com $x$; em seguida, repete-se a busca de $y$ em $G_1$. Se o melhor resultado for $x$, o par $(x, y)$ constitui um RBH \cite{Overbeek1999}. O critério é usado como aproximação de ortologia, pois, se cada gene é o melhor correspondente do outro, nenhum parálogo de $x$ ou de $y$ é mais próximo do par \cite{Tatusov1997, MorenoHagelsieb2008}.
 
