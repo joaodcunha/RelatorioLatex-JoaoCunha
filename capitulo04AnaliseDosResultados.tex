@@ -1,7 +1,7 @@
 \chapter{Resultados Parciais}
 \label{cap:04}
 
-% Macro ajustada com \vspace{2.5cm} para gerar caixas mais altas, do tamanho de telas web
+
 \newcommand{\capturaoupendente}[2]{%
 	\IfFileExists{#1}{\includegraphics[width=\textwidth]{#1}}{%
 		\fbox{\parbox{0.9\textwidth}{\centering\vspace{2.5cm}\textbf{[Inserir captura de tela: #2]}\par\texttt{#1}\vspace{2.5cm}}}}}
@@ -9,7 +9,7 @@
 Os resultados parciais correspondem às etapas do diagrama da Figura~\ref{fig:metodologia} concluídas até a qualificação. O núcleo bioinformático (\ref{oe:dados} a \ref{oe:modulo}) foi implementado e executado para três genes e quatro proteomas, a demonstração gráfica da interface foi produzida (\ref{oe:software}) e a validação (\ref{oe:validacao}) foi realizada em parte. A API e a interface web finais ainda não foram desenvolvidas, contudo, a concepção visual já foi estruturada por meio de um protótipo funcional em HTML, CSS e JavaScript. A Figura~\ref{fig:tela_menu} apresenta o menu principal desse protótipo, que centraliza o acesso à simulação e ao histórico biológico. Os resultados analíticos a seguir comparam sequências de proteínas e não permitem inferir diferenças de sabor, pois o sabor é um traço multifatorial (Seção~\ref{sec:cafe}).
 
 
-% --- ESPAÇO PARA IMAGEM 1: TELA MENU PRINCIPAL ---
+
 \begin{figure}[!htbp]
 	\centering
 	\vspace{1.0cm}
@@ -23,7 +23,7 @@ Os resultados parciais correspondem às etapas do diagrama da Figura~\ref{fig:me
 	\textbf{Fonte:} Elaborada pelo autor
 \end{figure}
 \FloatBarrier
-% -------------------------------------------------
+
 
 
 \section{Dados Utilizados e Qualidade dos Proteomas}
@@ -58,7 +58,7 @@ Os dois proteomas de \textit{C. arabica} têm apenas 11 cromossomos e o sufixo `
 Para contextualizar o usuário da interface acerca dessas especificidades, os dados biológicos, taxonômicos e históricos referentes às variedades estudadas (como a origem da \textit{Geisha} ou os teores de cafeína da \textit{C. mauritiana}) foram integrados a uma tela informativa no protótipo visual, ilustrada na Figura~\ref{fig:tela_historia}.
 
 
-% --- ESPAÇO PARA IMAGEM 2: TELA HISTÓRIA ---
+
 \begin{figure}[!htbp]
 	\centering
 	\vspace{1.0cm}
@@ -72,7 +72,7 @@ Para contextualizar o usuário da interface acerca dessas especificidades, os da
 	\textbf{Fonte:} Elaborada pelo autor
 \end{figure}
 \FloatBarrier
-% -------------------------------------------
+
 
 
 \section{Vias Metabólicas e Sequências-Âncora}
@@ -161,7 +161,6 @@ A implementação foi verificada por 39 testes automatizados. A pontuação obti
 Visando a usabilidade do software a ser desenvolvido, a configuração dos parâmetros de localização (BLASTP) e alinhamento (Gotoh) foi abstraída na interface gráfica em um formulário de simulação. Conforme ilustra o protótipo na Figura~\ref{fig:tela_configuracao}, o usuário poderá selecionar de forma intuitiva o proteoma de referência, o proteoma de consulta e a via metabólica desejada para acionar o \textit{pipeline} bioinformático.
 
 
-% --- ESPAÇO PARA IMAGEM 3: TELA DE CONFIGURAÇÃO ---
 \begin{figure}[!htbp]
 	\centering
 	\vspace{1.0cm}
@@ -175,7 +174,7 @@ Visando a usabilidade do software a ser desenvolvido, a configuração dos parâ
 	\textbf{Fonte:} Elaborada pelo autor
 \end{figure}
 \FloatBarrier
-% --------------------------------------------------
+
 
 
 \section{Resultados da Comparação}
@@ -209,7 +208,6 @@ Os valores de identidade PID1 para os seis pares de proteomas estão sumarizados
 Na proposta da interface web, a apresentação final desses dados dispensa tabelas estáticas em favor de um \textit{dashboard} dinâmico (Figura~\ref{fig:tela_resultados}). Essa tela foi projetada para exibir métricas consolidadas — como índice de similaridade (PID1), cobertura de alinhamento e validação de parálogos via RBH — em conjunto com uma demonstração visual do alinhamento pareado, evidenciando correspondências de resíduos (\textit{matches}), mutações pontuais (\textit{mismatches}) e lacunas afins (\textit{gaps}).
 
 
-% --- ESPAÇO PARA IMAGEM 4: TELA DE RESULTADOS (DASHBOARD) ---
 \begin{figure}[!htbp]
 	\centering
 	\vspace{1.0cm}
@@ -223,7 +221,7 @@ Na proposta da interface web, a apresentação final desses dados dispensa tabel
 	\textbf{Fonte:} Elaborada pelo autor
 \end{figure}
 \FloatBarrier
-% ------------------------------------------------------------
+
 
 
 O HCT foi o gene mais conservado: a identidade foi de 100\% entre as duas variedades de \textit{C. arabica} e \textit{C. canephora}, e de 97,70\% em todas as comparações com \textit{C. mauritiana}. A SPS apresentou 100\% entre as variedades de \textit{C. arabica}, 99,52\% entre \textit{C. arabica} e \textit{C. canephora}, e 92,95\% e 92,56\% nas comparações com \textit{C. mauritiana}. O DXMT só pôde ser comparado entre Red Bourbon e \textit{C. canephora}, com 98,96\%.
