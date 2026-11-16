@@ -246,7 +246,7 @@ Não há uma definição universal para $L$. Quatro definições são usuais, de
 		PID1 & Posições alinhadas, incluindo as lacunas internas & Lacunas reduzem o valor \\
 		PID2 & Posições alinhadas, excluindo as lacunas          & Lacunas são ignoradas \\
 		PID3 & Comprimento da menor sequência                    & Depende apenas da sequência menor \\
-		PID4 & Média dos comprimentos das duas sequências        & Intermediária entre PID3 e o comprimento da maior \\
+		PID4 & Média dos comprimentos das duas sequências        & Valor intermediário entre o PID3 e o obtido com o comprimento da maior sequência \\
 		\bottomrule
 	\end{tabularx}
 	\par\vspace{0.2cm}
@@ -255,7 +255,7 @@ Não há uma definição universal para $L$. Quatro definições são usuais, de
 \end{table}
 \FloatBarrier
 
-A escolha de $L$ tem efeito direto quando as sequências têm comprimentos diferentes. Em um alinhamento global, a sequência mais curta é completada com lacunas nas extremidades, e essas posições só entram no denominador de PID1. Com $L$ igual ao comprimento da menor sequência (PID3), o valor reflete somente a identidade em relação a ela. O alinhamento local, por sua vez, considera apenas a região mais semelhante, e a identidade calculada pode ser elevada mesmo quando a região cobre parte pequena das sequências.
+A escolha de $L$ tem efeito direto quando as sequências têm comprimentos diferentes. Em um alinhamento global, a sequência mais curta é completada com lacunas. As lacunas internas entram apenas no denominador de PID1, e as das extremidades só o afetam se forem contadas no comprimento do alinhamento, o que reduz a identidade sem que haja divergência entre os resíduos alinhados. Com $L$ igual ao comprimento da menor sequência (PID3), o valor reflete somente a identidade em relação a ela. O alinhamento local, por sua vez, considera apenas a região mais semelhante, e a identidade calculada pode ser elevada mesmo quando a região cobre parte pequena das sequências.
 
 Por essa razão, a identidade deve ser acompanhada da cobertura do alinhamento, que é a fração dos resíduos de uma sequência incluída no alinhamento (Equação~\ref{eq:cob}), em que $R_A$ é o número de resíduos de $A$ alinhados e $|A|$ é o comprimento de $A$. A cobertura é utilizada como critério complementar de qualidade em comparações entre genomas \cite{MorenoHagelsieb2008}.
 
@@ -286,7 +286,7 @@ Os valores de similaridade devem ser interpretados com base em quatro elementos:
 
 \subsection{O Gênero \textit{Coffea}}
 
-O cafeeiro pertence ao gênero \textit{Coffea}, da família Rubiaceae \cite{Davis2006}. O levantamento taxonômico de \citeauthorandyear{Davis2006} reconheceu 103 espécies, e a inclusão posterior de espécies do gênero \textit{Psilanthus}, com base em dados moleculares e morfológicos, elevou esse número para 124 \cite{Davis2011}. As espécies ocorrem naturalmente na África tropical, em Madagascar, nas ilhas do Oceano Índico e em regiões tropicais da Ásia e da Oceania \cite{Davis2006, Davis2011}. Todas são diploides (2n = 2x = 22), exceto \textit{Coffea arabica}, que é tetraploide (2n = 4x = 44) \cite{Davis2011}.
+O cafeeiro pertence ao gênero \textit{Coffea}, da família Rubiaceae \cite{Davis2006}. O levantamento taxonômico de \citeauthorandyear{Davis2006} reconheceu 103 espécies, e a inclusão posterior de espécies do gênero \textit{Psilanthus}, com base em dados moleculares e morfológicos, elevou esse número para 124 \cite{Davis2011}. As espécies ocorrem naturalmente na África tropical, em Madagascar, nas ilhas do Oceano Índico e em regiões tropicais da Ásia e da Oceania \cite{Davis2006, Davis2011}. Todas são diploides ($2n = 2x = 22$), exceto \textit{Coffea arabica}, que é tetraploide ($2n = 4x = 44$) \cite{Davis2011}.
 
 Duas espécies sustentam a produção comercial: \textit{C. arabica}, conhecida como café arábica, e \textit{C. canephora}, conhecida como café robusta \cite{Privat2008}. As demais espécies, como \textit{C. eugenioides}, progenitora de \textit{C. arabica}, e \textit{C. mauritiana}, nativa das ilhas Mascarenhas (Maurício e Reunião) \cite{Davis2006, Dulloo1999}, têm importância comercial reduzida, mas representam fonte de diversidade genética para o melhoramento \cite{Scalabrin2020}. \textit{C. mauritiana} pertence ao grupo de espécies de Madagascar e das ilhas do Oceano Índico (\textit{Mascarocoffea}) e está entre as de menor genoma desse grupo \cite{Razafinarivo2012}.
 

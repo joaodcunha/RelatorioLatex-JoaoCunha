@@ -6,7 +6,7 @@
 	\IfFileExists{#1}{\includegraphics[width=\textwidth]{#1}}{%
 		\fbox{\parbox{0.9\textwidth}{\centering\vspace{2.5cm}\textbf{[Inserir captura de tela: #2]}\par\texttt{#1}\vspace{2.5cm}}}}}
 
-Os resultados parciais correspondem às etapas do diagrama da Figura~\ref{fig:metodologia} concluídas até a qualificação. O núcleo bioinformático (\ref{oe:dados} a \ref{oe:modulo}) foi implementado e executado para três genes e quatro proteomas, a demonstração gráfica da interface foi produzida (\ref{oe:software}) e a validação (\ref{oe:validacao}) foi realizada em parte. A API e a interface web finais ainda não foram desenvolvidas, contudo, a concepção visual já foi estruturada por meio de um protótipo funcional em HTML, CSS e JavaScript. A Figura~\ref{fig:tela_menu} apresenta o menu principal desse protótipo, que centraliza o acesso à simulação e ao histórico biológico. Os resultados analíticos a seguir comparam sequências de proteínas e não permitem inferir diferenças de sabor, pois o sabor é um traço multifatorial (Seção~\ref{sec:cafe}).
+Os resultados parciais correspondem às etapas do diagrama da Figura~\ref{fig:metodologia} concluídas até a qualificação. O núcleo bioinformático (Etapas 1 a 5) foi implementado e executado para três genes e quatro proteomas, a demonstração gráfica da interface foi produzida (Etapa 6) e a validação (Etapa 7) foi realizada em parte. A API e a interface web finais ainda não foram desenvolvidas; contudo, a concepção visual já foi estruturada por meio de um protótipo visual em HTML, CSS e JavaScript. A Figura~\ref{fig:tela_menu} apresenta o menu principal desse protótipo, que centraliza o acesso à simulação e ao histórico biológico. Os resultados analíticos a seguir comparam sequências de proteínas e não permitem inferir diferenças de sabor, pois o sabor é um traço multifatorial (Seção~\ref{sec:cafe}).
 
 
 
@@ -28,7 +28,7 @@ Os resultados parciais correspondem às etapas do diagrama da Figura~\ref{fig:me
 
 \section{Dados Utilizados e Qualidade dos Proteomas}
 
-Esta etapa correspondeu ao \ref{oe:dados}. Os arquivos multi-FASTA dos proteomas preditos foram obtidos do \textit{Coffee Genome Hub} \cite{Dereeper2015, CoffeeHub}. Entre os seis proteomas disponíveis, foram escolhidos os quatro de melhor qualidade, e os proteomas de ET-39 e de \textit{C. humblotiana} foram descartados por apresentarem montagem fragmentada. Os indicadores dos quatro proteomas selecionados estão na Tabela~\ref{tab:qualidade}.
+Esta etapa correspondeu ao primeiro objetivo específico. Os arquivos multi-FASTA dos proteomas preditos foram obtidos do \textit{Coffee Genome Hub} \cite{Dereeper2015, CoffeeHub}. Entre os seis proteomas obtidos, foram escolhidos quatro, e os de \textit{C. arabica} ET-39 e de \textit{C. humblotiana} foram descartados porque os demais apresentaram maior integridade dos dados. Para \textit{C. arabica}, optou-se por utilizar nesta fase apenas os arquivos do subgenoma de origem \textit{canephora}. Os indicadores dos quatro proteomas selecionados estão na Tabela~\ref{tab:qualidade}.
 
 \FloatBarrier
 \begin{table}[!htbp]
@@ -53,9 +53,9 @@ Esta etapa correspondeu ao \ref{oe:dados}. Os arquivos multi-FASTA dos proteomas
 
 O proteoma de Red Bourbon, com 33.989 proteínas, foi o maior e o de maior redundância (8,52\%), enquanto os demais ficaram entre 0,42\% e 1,46\%. O proteoma de \textit{C. mauritiana} apresentou a menor mediana de comprimento das proteínas, de 258 aminoácidos. O proteoma de \textit{C. canephora} tem 25.574 proteínas, número igual ao de genes preditos na publicação original do genoma \cite{Denoeud2014}.
 
-Os dois proteomas de \textit{C. arabica} têm apenas 11 cromossomos e o sufixo ``CC'' nos identificadores. Como o genoma completo da espécie é formado por dois subgenomas, cada um com 11 cromossomos (Seção~\ref{subsec:genomas}), esse resultado sugere que os arquivos contêm apenas o subgenoma de origem \textit{canephora}. Essa interpretação ainda não foi confirmada.
+Os dois proteomas de \textit{C. arabica} têm apenas 11 cromossomos, e os arquivos trazem o sufixo ``CC'' no nome. Como o genoma completo da espécie é formado por dois subgenomas, cada um com 11 cromossomos (Seção~\ref{subsec:genomas}), os arquivos contêm apenas o subgenoma de origem \textit{canephora}: o \textit{Coffee Genome Hub} distribui cada genoma de \textit{C. arabica} em dois arquivos, um por subgenoma, identificados pelos sufixos CC e CE \cite{CoffeeHub}.
 
-Para contextualizar o usuário da interface acerca dessas especificidades, os dados biológicos, taxonômicos e históricos referentes às variedades estudadas (como a origem da \textit{Geisha} ou os teores de cafeína da \textit{C. mauritiana}) foram integrados a uma tela informativa no protótipo visual, ilustrada na Figura~\ref{fig:tela_historia}.
+Para contextualizar o usuário da interface acerca dessas especificidades, os dados biológicos, taxonômicos e históricos referentes às variedades estudadas (como a origem da Geisha ou os teores de cafeína de \textit{C. mauritiana}) foram integrados a uma tela informativa no protótipo visual, ilustrada na Figura~\ref{fig:tela_historia}.
 
 
 
@@ -77,7 +77,7 @@ Para contextualizar o usuário da interface acerca dessas especificidades, os da
 
 \section{Vias Metabólicas e Sequências-Âncora}
 
-Esta etapa correspondeu ao \ref{oe:vias}. As três vias e as sequências-âncora adotadas estão na Tabela~\ref{tab:ancoras}. As âncoras do DXMT e do HCT são proteínas de \textit{C. canephora}, caracterizadas estruturalmente por \citeauthorandyear{McCarthy2007} e por \citeauthorandyear{Lallemand2012}, respectivamente.
+Esta etapa correspondeu ao segundo objetivo específico. As três vias e as sequências-âncora adotadas estão na Tabela~\ref{tab:ancoras}. As âncoras do DXMT e do HCT são proteínas de \textit{C. canephora}, caracterizadas estruturalmente por \citeauthorandyear{McCarthy2007} e por \citeauthorandyear{Lallemand2012}, respectivamente.
 
 \FloatBarrier
 \begin{table}[!htbp]
@@ -101,7 +101,7 @@ Esta etapa correspondeu ao \ref{oe:vias}. As três vias e as sequências-âncora
 
 \section{Localização dos Genes Correspondentes}
 
-Esta etapa correspondeu ao \ref{oe:localizacao}. Cada âncora foi buscada nos quatro proteomas por BLASTP local, com \textit{E-value} menor ou igual a $10^{-20}$, cobertura do alinhamento de pelo menos 70\% e razão de comprimento de pelo menos 0,7 entre as sequências. A correspondência foi confirmada pelo critério de melhores correspondências recíprocas (Seção~\ref{subsec:rbh}), tendo \textit{C. canephora} como proteoma de referência. O procedimento está resumido no Quadro~\ref{qua:rbh}, e o resultado da localização está na Tabela~\ref{tab:localizacao}.
+Esta etapa correspondeu ao terceiro objetivo específico. Cada âncora foi buscada nos quatro proteomas por BLASTP local, com \textit{E-value} menor ou igual a $10^{-20}$, cobertura do alinhamento de pelo menos 70\% e razão de comprimento de pelo menos 0,7 entre as sequências. A correspondência foi confirmada pelo critério de melhores correspondências recíprocas (Seção~\ref{subsec:rbh}), tendo \textit{C. canephora} como proteoma de referência. O procedimento está resumido no Quadro~\ref{qua:rbh}, e o resultado da localização está na Tabela~\ref{tab:localizacao}.
 
 \FloatBarrier
 \begin{quadro}[!htbp]
@@ -148,15 +148,15 @@ Esta etapa correspondeu ao \ref{oe:localizacao}. Cada âncora foi buscada nos qu
 \end{table}
 \FloatBarrier
 
-O HCT e a SPS foram localizados nos quatro proteomas e, em cada um deles, nos mesmos cromossomos (4 e 6). O DXMT de \textit{C. canephora}, identificado como \texttt{Cc01t00720.1}, corresponde ao gene \texttt{cc01\_g00720} descrito na literatura \cite{Denoeud2014, Raharimalala2021}.
+O HCT e a SPS foram localizados nos quatro proteomas e, em cada um deles, nos mesmos cromossomos (o HCT no cromossomo 4 e a SPS no cromossomo 6). O DXMT de \textit{C. canephora}, identificado como \texttt{Cc01t00720.1}, corresponde ao gene \texttt{cc01\_g00720} descrito na literatura \cite{Denoeud2014, Raharimalala2021}.
 
-Em \textit{C. canephora}, os genes \textit{XMT} e \textit{MXMT} ocupam um agrupamento de N-metiltransferases formado por duplicações em tandem no cromossomo 9, enquanto o \textit{DXMT} está no cromossomo 1 \cite{Raharimalala2021}. Os genes desse agrupamento têm entre 80\% e 85\% de identidade entre si. Na Geisha e na \textit{C. mauritiana}, o melhor resultado do BLASTP para a âncora do DXMT era um gene desse agrupamento, e não o DXMT. A confirmação por melhores correspondências recíprocas rejeitou esse candidato, e o DXMT foi considerado não encontrado nesses dois proteomas. Uma versão anterior do código, sem essa confirmação, aceitava o candidato e produziu valores de identidade incorretos para os pares envolvendo esses proteomas, que foram descartados. O caso ilustra a limitação do critério de melhor resultado isolado em famílias com duplicações recentes (Seção~\ref{subsec:rbh}).
+Em \textit{C. canephora}, os genes \textit{XMT} e \textit{MXMT} ocupam um agrupamento de N-metiltransferases formado por duplicações em tandem no cromossomo 9, enquanto o \textit{DXMT} está no cromossomo 1 \cite{Raharimalala2021}. Os genes desse agrupamento têm entre 80\% e 85\% de identidade entre si. Na Geisha e em \textit{C. mauritiana}, o melhor resultado do BLASTP para a âncora do DXMT era um gene desse agrupamento, e não o DXMT. A confirmação por melhores correspondências recíprocas rejeitou esse candidato, e o DXMT foi considerado não encontrado nesses dois proteomas. Uma versão anterior do código, sem essa confirmação, aceitava o candidato e produziu valores de identidade incorretos para os pares envolvendo esses proteomas, que foram descartados. O caso ilustra a limitação do critério de melhor resultado isolado em famílias com duplicações recentes (Seção~\ref{subsec:rbh}).
 
 \section{Alinhamento e Métrica de Similaridade}
 
-Esta etapa correspondeu ao \ref{oe:alinhamento}. O alinhamento foi realizado por uma implementação própria do algoritmo de Gotoh (Equação~\ref{eq:gotoh}), com a matriz BLOSUM62 e penalidade de lacuna afim $w(k) = 11 + 1 \cdot k$. A métrica principal foi a identidade PID1 (Equação~\ref{eq:pid} e Tabela~\ref{tab:pid}), com as identidades divididas pelo comprimento do alinhamento sem as lacunas terminais.
+Esta etapa correspondeu ao quarto objetivo específico. O alinhamento foi realizado por uma implementação própria do algoritmo de Gotoh (Equação~\ref{eq:gotoh}), com a matriz BLOSUM62 e penalidade de lacuna afim $w(k) = 11 + 1 \cdot k$. A métrica principal foi a identidade PID1 (Equação~\ref{eq:pid} e Tabela~\ref{tab:pid}), com as identidades divididas pelo comprimento do alinhamento sem as lacunas terminais.
 
-A implementação foi verificada por 39 testes automatizados. A pontuação obtida pelo algoritmo coincidiu com a do \texttt{PairwiseAligner} do Biopython \cite{Cock2009} em 25 pares aleatórios de sequências, em três conjuntos de penalidades e nas âncoras reais, o que atende parte do \ref{oe:validacao}.
+A implementação foi verificada por 39 testes automatizados. A pontuação obtida pelo algoritmo coincidiu com a do \texttt{PairwiseAligner} do Biopython \cite{Cock2009} em 25 pares aleatórios de sequências, em três conjuntos de penalidades e nas âncoras reais, o que atende parte do sétimo objetivo específico.
 
 Visando a usabilidade do software a ser desenvolvido, a configuração dos parâmetros de localização (BLASTP) e alinhamento (Gotoh) foi abstraída na interface gráfica em um formulário de simulação. Conforme ilustra o protótipo na Figura~\ref{fig:tela_configuracao}, o usuário poderá selecionar de forma intuitiva o proteoma de referência, o proteoma de consulta e a via metabólica desejada para acionar o \textit{pipeline} bioinformático.
 
@@ -205,7 +205,7 @@ Os valores de identidade PID1 para os seis pares de proteomas estão sumarizados
 \end{table}
 \FloatBarrier
 
-Na proposta da interface web, a apresentação final desses dados dispensa tabelas estáticas em favor de um \textit{dashboard} dinâmico (Figura~\ref{fig:tela_resultados}). Essa tela foi projetada para exibir métricas consolidadas — como índice de similaridade (PID1), cobertura de alinhamento e validação de parálogos via RBH — em conjunto com uma demonstração visual do alinhamento pareado, evidenciando correspondências de resíduos (\textit{matches}), mutações pontuais (\textit{mismatches}) e lacunas afins (\textit{gaps}).
+Na proposta da interface web, a apresentação final desses dados dispensa tabelas estáticas em favor de um \textit{dashboard} dinâmico (Figura~\ref{fig:tela_resultados}). Essa tela foi projetada para exibir métricas consolidadas, como índice de similaridade (PID1), cobertura de alinhamento e validação de parálogos via RBH, em conjunto com uma demonstração visual do alinhamento pareado, evidenciando correspondências de resíduos (\textit{matches}), mutações pontuais (\textit{mismatches}) e lacunas afins (\textit{gaps}). Os valores exibidos na figura são simulados e não correspondem aos resultados da Tabela~\ref{tab:identidade}.
 
 
 \begin{figure}[!htbp]
@@ -224,50 +224,61 @@ Na proposta da interface web, a apresentação final desses dados dispensa tabel
 
 
 
-O HCT foi o gene mais conservado: a identidade foi de 100\% entre as duas variedades de \textit{C. arabica} e \textit{C. canephora}, e de 97,70\% em todas as comparações com \textit{C. mauritiana}. A SPS apresentou 100\% entre as variedades de \textit{C. arabica}, 99,52\% entre \textit{C. arabica} e \textit{C. canephora}, e 92,95\% e 92,56\% nas comparações com \textit{C. mauritiana}. O DXMT só pôde ser comparado entre Red Bourbon e \textit{C. canephora}, com 98,96\%.
+O HCT foi o gene mais conservado: a identidade foi de 100\% nos três pares formados pelas duas variedades de \textit{C. arabica} e por \textit{C. canephora}, e de 97,70\% em todas as comparações com \textit{C. mauritiana}. A SPS apresentou 100\% entre as variedades de \textit{C. arabica}, 99,52\% entre \textit{C. arabica} e \textit{C. canephora}, e 92,95\% e 92,56\% nas comparações com \textit{C. mauritiana}. O DXMT só pôde ser comparado entre Red Bourbon e \textit{C. canephora}, com 98,96\%.
 
 Entre as variedades de \textit{C. arabica}, os valores de 100\% são coerentes com a identidade mediana de 99,67\% relatada para os ortólogos de Geisha e Red Bourbon \cite{Medrano2025}. A menor identidade das comparações com \textit{C. mauritiana}, espécie do grupo das ilhas do Oceano Índico (Seção~\ref{sec:cafe}), é compatível com sua maior distância evolutiva (Seção~\ref{sec:evolucao}). A maior conservação do HCT pode estar associada à forte restrição funcional de uma enzima que também participa da biossíntese de lignina \cite{Lallemand2012}, mas essa interpretação não foi testada.
 
 \section{Limitações e Pendências}
 
-O DXMT não foi encontrado nos proteomas de Geisha e de \textit{C. mauritiana}, o que pode indicar ausência real do gene ou falha de anotação. Como Geisha e Red Bourbon são variedades da mesma espécie, com alta identidade entre ortólogos \cite{Medrano2025}, a ausência do DXMT apenas na Geisha sugere diferença de anotação ou de montagem, e não ausência do gene. A ausência em \textit{C. mauritiana} é compatível com o teor muito baixo de cafeína relatado em sementes da espécie e com a ausência do DXMT no genoma de \textit{C. humblotiana}, também sem cafeína \cite{Raharimalala2021}, mas constitui apenas uma hipótese. A verificação definitiva exige a busca do DXMT por tBLASTn nas montagens completas dos dois genomas, ainda não realizada.
+As comparações do DXMT que envolvem Geisha e \textit{C. mauritiana} falharam, pois o gene não foi localizado nesses dois proteomas. Na Geisha, o motivo é uma falha de anotação: a busca direta da âncora na montagem do genoma, por tBLASTn, encontrou a sequência do gene no cromossomo 1, mas não há modelo gênico correspondente, de modo que a proteína não consta do proteoma. Em \textit{C. mauritiana}, a mesma busca não encontrou cópia íntegra do gene no genoma, o que é compatível com o teor muito baixo de cafeína relatado em sementes da espécie e com a ausência do DXMT no genoma de \textit{C. humblotiana}, também sem cafeína \cite{Raharimalala2021}.
 
-Duas pendências adicionais foram identificadas. A primeira é a confirmação de que os proteomas de \textit{C. arabica} contêm apenas um subgenoma. A segunda é o registro, no arquivo \texttt{data/metadata.json}, da versão do genoma e da anotação e da data de obtenção de cada arquivo. Por fim, a API em Node.js com TypeScript e a interface em Next.js, que lerão o arquivo \texttt{results.json}, ainda serão desenvolvidas.
-
-
-\chapter{Análise dos Resultados}
-\label{cap:04}
-
-Relatar os resultados obtidos a partir dos experimentos e dos estudos realizados. 
-
-
-\section{Resultados/Impactos}
-
-Resultados.
-
-
-\section{Orçamento}
-
-Orçamento, caso exista.
-
+Por se tratar de resultados parciais, nem todas as saídas previstas na metodologia são apresentadas neste capítulo: a proporção de resíduos ambíguos e a distribuição de comprimento das proteínas de cada proteoma, a cobertura de cada alinhamento e o identificador e o cromossomo de cada gene localizado constarão da versão final. Outra pendência é o registro, no arquivo \texttt{data/metadata.json}, da versão do genoma e da anotação e da data de obtenção de cada arquivo. Segundo o \textit{Coffee Genome Hub} \cite{CoffeeHub}, os proteomas utilizados correspondem à versão 1 das montagens de Geisha \cite{Medrano2025}, de Red Bourbon \cite{Scalabrin2024}, de \textit{C. canephora} \cite{Denoeud2014} e de \textit{C. mauritiana}, esta ainda não publicada. Por fim, a API em Node.js com TypeScript e a interface em Next.js, que lerão o arquivo \texttt{results.json}, ainda serão desenvolvidas.
 
 \section{Cronograma do Trabalho}
 
-Segue abaixo o cronograma de trabalho das atividades realizadas e das que serão executadas até a Avaliação Final de TCC.
-
-\textbf{Obs:} Para facilitar, crie o cronograma usando o modelo do Word contido no projeto (imagens/templateCronograma.docx), ou qualquer outro \textit{software}, salve a imagem e atualize o arquivo imagens/cronograma.png.
+O Quadro~\ref{qua:cronograma} apresenta as atividades realizadas até a qualificação, em dezembro de 2026, e as previstas até a defesa do trabalho, em julho de 2027.
 
 \FloatBarrier
-\begin{figure*}[!htbp]
+\begin{quadro}[!htbp]
 	\centering
-	\includegraphics[scale=1]{imagens/cronograma}
-\end{figure*}
+	\SingleSpacing\footnotesize
+	\caption{Cronograma das atividades, de agosto de 2026 a julho de 2027}
+	\newcommand{\cx}{\cellcolor{black!20}X}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{|c|*{12}{>{\centering\arraybackslash}p{0.74cm}|}}
+		\hline
+		& \multicolumn{5}{c|}{\textbf{2026}} & \multicolumn{7}{c|}{\textbf{2027}} \\ \hline
+		\textbf{Atividade} & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez} & \textbf{Jan} & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Mai} & \textbf{Jun} & \textbf{Jul} \\ \hline
+		1  & \cx & \cx & \cx &     &     &     &     &     &     &     &     &     \\ \hline
+		2  &     &     & \cx & \cx &     &     &     &     &     &     &     &     \\ \hline
+		3  &     & \cx & \cx & \cx &     &     &     &     &     &     &     &     \\ \hline
+		4  &     &     &     & \cx &     &     &     &     &     &     &     &     \\ \hline
+		5  &     &     &     & \cx & \cx &     &     &     &     &     &     &     \\ \hline
+		6  &     &     &     &     &     & \cx & \cx &     &     &     &     &     \\ \hline
+		7  &     &     &     &     &     &     & \cx & \cx &     &     &     &     \\ \hline
+		8  &     &     &     &     &     &     &     & \cx & \cx & \cx &     &     \\ \hline
+		9  &     &     &     &     &     &     &     &     &     & \cx & \cx &     \\ \hline
+		10 &     &     &     &     &     &     &     &     &     & \cx & \cx & \cx \\ \hline
+		11 &     &     &     &     &     &     &     &     &     &     &     & \cx \\ \hline
+	\end{tabular}
+	\par\vspace{0.2cm}
+	\textbf{Fonte:} Elaborado pelo autor
+	\label{qua:cronograma}
+\end{quadro}
 \FloatBarrier
+
+As atividades do cronograma são as seguintes:
 
 \begin{enumerate}
-	\item Descrição da atividade 1;
-	\item Descrição da atividade 2;
-	\item Descrição da atividade 3;
-	\item Descrição da atividade 4;
-	\item Descrição da atividade 5.
+	\item Levantamento bibliográfico e redação da fundamentação teórica;
+	\item Definição da metodologia;
+	\item Obtenção dos proteomas e implementação do núcleo bioinformático (Etapas 1 a 5);
+	\item Construção do protótipo visual da interface;
+	\item Redação do relatório parcial e qualificação;
+	\item Resolução das pendências do núcleo bioinformático;
+	\item Desenvolvimento da API (Etapa 6);
+	\item Desenvolvimento da interface web (Etapa 6);
+	\item Conclusão da validação (Etapa 7) e testes da ferramenta;
+	\item Redação da versão final do relatório;
+	\item Defesa do trabalho.
 \end{enumerate}

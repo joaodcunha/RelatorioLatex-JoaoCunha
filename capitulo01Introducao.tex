@@ -1,27 +1,17 @@
 \chapter{Introdução}
 \label{cap:01}
 
-O objetivo deste documento é esclarecer aos autores o formato que deve ser utilizado nos relatórios técnicos a serem submetidos ao final dos cursos de Graduação e Pós-Graduação do IFSP câmpus São João da Boa Vista. Este documento está escrito de acordo com o modelo indicado para a formatação dos relatórios técnicos; assim, serve de referência, ao mesmo tempo em que comenta os diversos aspectos da formatação.
+O cafeeiro pertence ao gênero \textit{Coffea}, que reúne 124 espécies \cite{Davis2011}, das quais duas sustentam a produção comercial: \textit{Coffea arabica}, o café arábica, e \textit{Coffea canephora}, o café robusta \cite{Privat2008}. A qualidade da bebida é avaliada, em grande parte, pelo sabor e pelo aroma, características que dependem do genótipo da planta, das condições de cultivo, do processamento pós-colheita, da torra e do preparo \cite{Buffo2004, Ludwig2014}. A parcela que cabe ao genótipo se expressa na composição do grão verde, em que compostos como a cafeína, os ácidos clorogênicos e a sacarose atuam como determinantes ou precursores de atributos sensoriais \cite{Ludwig2014}. As enzimas que sintetizam esses compostos são conhecidas, e os genes que as codificam foram caracterizados em \textit{Coffea} \cite{Uefuji2003, Lallemand2012, Privat2008}.
 
-Observe as instruções e formate seu relatório técnico de acordo com este padrão. Lembre-se que uma formatação correta contribui para uma boa avaliação do seu trabalho.
+Na última década, os genomas de diferentes espécies e variedades do gênero foram sequenciados. O genoma de \textit{C. canephora} foi o primeiro \cite{Denoeud2014}, seguido pelos de variedades de \textit{C. arabica}, como a Red Bourbon \cite{Scalabrin2020, Scalabrin2024} e a Geisha \cite{Medrano2025}. Esses dados estão reunidos no \textit{Coffee Genome Hub}, que disponibiliza publicamente os genomas, as anotações e os proteomas preditos, isto é, o conjunto das sequências de proteínas deduzidas de cada genoma \cite{Dereeper2015, CoffeeHub}. Com isso, tornou-se possível comparar a mesma proteína entre variedades e espécies e medir o quanto sua sequência foi conservada.
 
-Além disso, neste documento estão listadas as seções obrigatórias que você deverá fornecer, bem como os exemplos dos comandos mais comuns que serão utilizados na construção de seu documento. Para pesquisar sobre mais comandos, recomenda-se a utilização do site \url{https://ctan.org/}, que é a biblioteca principal do \LaTeX, e o do site \url{https://tex.stackexchange.com} que é uma das principais comunidades para solução de dúvidas relacionadas a \LaTeX. Ambas são em inglês.
+Essa comparação, porém, não é direta. Em primeiro lugar, é preciso localizar, em cada proteoma, o gene que corresponde à proteína de interesse, e o resultado mais semelhante de uma busca nem sempre é o gene correto. Famílias formadas por duplicações recentes, como a das N-metiltransferases da biossíntese da cafeína, contêm cópias muito parecidas entre si \cite{Denoeud2014}, o que favorece a escolha de um parálogo \cite{MorenoHagelsieb2008}. Em segundo lugar, a porcentagem de identidade, medida mais usada para expressar a semelhança entre duas sequências, não tem definição única, e o valor obtido depende do algoritmo de alinhamento e do denominador adotado \cite{May2004, Raghava2006}. Por fim, a qualidade dos proteomas preditos varia com a qualidade da montagem e da anotação de cada genoma \cite{Alkan2011, Yandell2012}.
 
-A introdução é um elemento preliminar, opcional, utilizado para fornecer informações específicas, comentar tecnicamente o conteúdo do trabalho, além de evidenciar as motivações que levaram o autor à escolha de determinado tema.
+Os estudos de genômica comparativa em \textit{Coffea} lidam com essas dificuldades encadeando vários programas, como o BLAST, o HMMER, o OrthoMCL e o OrthoFinder, aplicados a proteomas completos e a uma família gênica específica \cite{Santos2022, Park2025}. Esse procedimento exige familiaridade com a linha de comando e com o formato de saída de cada programa, e os critérios adotados em cada etapa ficam distribuídos entre os parâmetros de programas distintos. Nos trabalhos correlatos analisados (Capítulo~\ref{cap:02}), não se identificou uma ferramenta que reúna, em um único fluxo e para um conjunto delimitado de genes, a localização do gene correspondente, o alinhamento e o cálculo da similaridade, com os critérios de cada etapa declarados junto aos resultados.
 
-Trata-se de importante estratégia de aproximação, pois permite valorizar a escolha do assunto, mostrar a relevância da abordagem temática e esclarecer quanto ao passo-a-passo utilizado na estruturação do texto.
+Este trabalho propõe o desenvolvimento de um protótipo de ferramenta com essa finalidade. A partir da sequência de uma proteína já caracterizada na literatura, denominada sequência-âncora, a ferramenta localiza o gene correspondente em cada proteoma, confirma a correspondência pelo critério de melhores correspondências recíprocas, alinha as proteínas encontradas e calcula a porcentagem de identidade entre elas. O protótipo é aplicado a três genes de vias associadas ao sabor e ao aroma do café, o \textit{DXMT} (cafeína), o \textit{HCT} (ácidos clorogênicos) e o \textit{SPS} (sacarose), em quatro proteomas: os das variedades Geisha e Red Bourbon de \textit{C. arabica}, o de \textit{C. canephora} e o de \textit{C. mauritiana}.
 
-Na introdução, o leitor terá condições de avaliar:
-
-\begin{itemize}
-	\item O grau de informação, conhecimento e competência técnica do autor relativamente ao assunto a ser tratado;
-	\item A qualidade, a eficiência, a originalidade e o ineditismo de sua abordagem;
-	\item A pertinência das informações apresentadas e a possibilidade de acrescentar algo de novo ao universo conceitual do leitor.
-\end{itemize}
-
-
-% Substitui, em capitulo01Introducao.tex, as seções "Objetivos", "Objetivo Geral" e "Objetivos Específicos" do template.
-% Usa enumitem (já carregado em estrutura.sty). Os rótulos oe:* são referenciados na Metodologia.
+O escopo do trabalho é a comparação de sequências. Como o sabor e o aroma são traços multifatoriais, a conservação ou a divergência de uma proteína não permite, por si só, inferir diferenças sensoriais entre variedades \cite{Privat2008, Buffo2004}, e os resultados não são interpretados nesse sentido.
 
 \section{Objetivos}
 \label{sec:objetivos}
@@ -32,12 +22,16 @@ Desenvolver um protótipo de ferramenta computacional para a análise comparativ
 
 \subsection{Objetivos Específicos}
 
-\begin{enumerate}[label=OE\arabic*., ref=OE\arabic*]
-	\item \label{oe:dados} Obter os proteomas preditos das variedades e espécies de \textit{Coffea} que serão comparadas e verificar sua qualidade por critérios objetivos;
-	\item \label{oe:vias} Definir as vias metabólicas associadas ao sabor e ao aroma e a sequência-âncora de referência de cada via;
-	\item \label{oe:localizacao} Implementar a localização do gene correspondente à sequência-âncora em cada proteoma;
-	\item \label{oe:alinhamento} Implementar o alinhamento global com penalidade de lacuna afim e a métrica de similaridade entre pares de proteínas;
-	\item \label{oe:modulo} Organizar o núcleo bioinformático em um módulo reutilizável que gere os resultados em formato estruturado;
-	\item \label{oe:software} Desenvolver uma API e uma interface web para executar e visualizar as comparações;
-	\item \label{oe:validacao} Validar a correspondência dos genes encontrados e a métrica de similaridade com dados da literatura.
-\end{enumerate}
+\begin{itemize}
+	\item Obter os proteomas preditos das variedades e espécies de \textit{Coffea} que serão comparadas e verificar sua qualidade por critérios objetivos;
+	\item Definir as vias metabólicas associadas ao sabor e ao aroma e a sequência-âncora de referência de cada via;
+	\item Implementar a localização do gene correspondente à sequência-âncora em cada proteoma;
+	\item Implementar o alinhamento global com penalidade de lacuna afim e a métrica de similaridade entre pares de proteínas;
+	\item Organizar o núcleo bioinformático em um módulo reutilizável que gere os resultados em formato estruturado;
+	\item Desenvolver uma API e uma interface web para executar e visualizar as comparações;
+	\item Validar a correspondência dos genes encontrados e a métrica de similaridade com dados da literatura.
+\end{itemize}
+
+\section{Organização do Trabalho}
+
+O Capítulo~\ref{cap:02} apresenta os conceitos que fundamentam o trabalho: o fluxo da informação genética, a evolução molecular, os algoritmos de alinhamento, as métricas de similaridade, o gênero \textit{Coffea}, os bancos de dados biológicos e o formato FASTA, além dos trabalhos correlatos. O Capítulo~\ref{cap:03} descreve a metodologia, organizada em sete etapas que correspondem aos objetivos específicos. O Capítulo~\ref{cap:04} relata os resultados parciais obtidos até a qualificação e o cronograma do trabalho. O Capítulo~\ref{cap:05} traz as conclusões parciais e as etapas seguintes.
